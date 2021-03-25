@@ -52,10 +52,11 @@
 
 2.7.2 디바이스에 앱을 설치할 때 주의할 점
 
-[통합 개발 환경](https://ko.wikipedia.org/wiki/통합_개발_환경)
 
+[통합 개발 환경](https://ko.wikipedia.org/wiki/통합_개발_환경)
 
 
 Short cuts
 
 [Xcode](https://www.notion.so/Xcode-8d469ec38b48463d916fac7fd5970e52)
+
