@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import RxSwift
 
 class ViewController: UIViewController {
+  
+  let disposeBag: DisposeBag = DisposeBag()
   
   static func instantiate() -> ViewController {
     let storyboard = UIStoryboard(name: "Main", bundle: .main)
@@ -18,5 +21,11 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    let service = RestaurantService()
+    service.fetchRestaurants()
+      .subscribe { restaurants in
+        print(restaurants)
+      }
+      .disposed(by: disposeBag)
   }
 }
