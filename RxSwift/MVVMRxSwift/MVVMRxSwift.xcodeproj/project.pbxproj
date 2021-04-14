@@ -54,6 +54,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0926173F2628014C0038DFC7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09D02496261F4573009CD36A /* ViewController.swift */,
+				0979FA1E2622D951008F7632 /* RestaurantListModel.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		09261742262803CD0038DFC7 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				09D02498261F4573009CD36A /* Main.storyboard */,
+				09D0249D261F4575009CD36A /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		09261753262804E40038DFC7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0979FA1B2622D7C2008F7632 /* RestaurantsListModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		09261754262804F00038DFC7 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				0979FA18261F705A008F7632 /* RestaurantService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		0979FA5426272D15008F7632 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0979FA15261F6F6E008F7632 /* Restaurant.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		09D02486261F4573009CD36A = {
 			isa = PBXGroup;
 			children = (
@@ -75,21 +117,51 @@
 		09D02491261F4573009CD36A /* MVVMRxSwift */ = {
 			isa = PBXGroup;
 			children = (
-				09D02492261F4573009CD36A /* AppDelegate.swift */,
-				09D02494261F4573009CD36A /* SceneDelegate.swift */,
-				09D02496261F4573009CD36A /* ViewController.swift */,
-				09D02498261F4573009CD36A /* Main.storyboard */,
-				09D0249B261F4575009CD36A /* Assets.xcassets */,
-				09D0249D261F4575009CD36A /* LaunchScreen.storyboard */,
-				09D024A0261F4575009CD36A /* Info.plist */,
-				0979FA0A261F6A70008F7632 /* AppCoordinator.swift */,
-				0979FA12261F6E3E008F7632 /* restaurants.json */,
-				0979FA15261F6F6E008F7632 /* Restaurant.swift */,
-				0979FA18261F705A008F7632 /* RestaurantService.swift */,
-				0979FA1B2622D7C2008F7632 /* RestaurantsListModel.swift */,
-				0979FA1E2622D951008F7632 /* RestaurantListModel.swift */,
+				09E49C46262805E2002C0985 /* Application */,
+				09E49C45262805D4002C0985 /* Coordinator */,
+				09E49C43262805B5002C0985 /* Resources */,
+				09261754262804F00038DFC7 /* Service */,
+				0979FA5426272D15008F7632 /* Model */,
+				09261753262804E40038DFC7 /* ViewModel */,
+				0926173F2628014C0038DFC7 /* View */,
+				09261742262803CD0038DFC7 /* Storyboard */,
+				09E49C4826280656002C0985 /* Supporting Files */,
 			);
 			path = MVVMRxSwift;
+			sourceTree = "<group>";
+		};
+		09E49C43262805B5002C0985 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				09D0249B261F4575009CD36A /* Assets.xcassets */,
+				0979FA12261F6E3E008F7632 /* restaurants.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		09E49C45262805D4002C0985 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				0979FA0A261F6A70008F7632 /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		09E49C46262805E2002C0985 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				09D02492261F4573009CD36A /* AppDelegate.swift */,
+				09D02494261F4573009CD36A /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		09E49C4826280656002C0985 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				09D024A0261F4575009CD36A /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		2036414E4D26092848C0A95A /* Frameworks */ = {
@@ -381,7 +453,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YAHW75YBYW;
-				INFOPLIST_FILE = MVVMRxSwift/Info.plist;
+				INFOPLIST_FILE = "MVVMRxSwift/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -401,7 +473,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YAHW75YBYW;
-				INFOPLIST_FILE = MVVMRxSwift/Info.plist;
+				INFOPLIST_FILE = "MVVMRxSwift/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
