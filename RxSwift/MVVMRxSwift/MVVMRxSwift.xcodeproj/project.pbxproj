@@ -54,6 +54,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0979FA5426272D15008F7632 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0979FA15261F6F6E008F7632 /* Restaurant.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0979FA5526272D1F008F7632 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0979FA5626272D27008F7632 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		09D02486261F4573009CD36A = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +97,9 @@
 		09D02491261F4573009CD36A /* MVVMRxSwift */ = {
 			isa = PBXGroup;
 			children = (
+				0979FA5626272D27008F7632 /* ViewModel */,
+				0979FA5526272D1F008F7632 /* View */,
+				0979FA5426272D15008F7632 /* Model */,
 				09D02492261F4573009CD36A /* AppDelegate.swift */,
 				09D02494261F4573009CD36A /* SceneDelegate.swift */,
 				09D02496261F4573009CD36A /* ViewController.swift */,
@@ -84,7 +109,6 @@
 				09D024A0261F4575009CD36A /* Info.plist */,
 				0979FA0A261F6A70008F7632 /* AppCoordinator.swift */,
 				0979FA12261F6E3E008F7632 /* restaurants.json */,
-				0979FA15261F6F6E008F7632 /* Restaurant.swift */,
 				0979FA18261F705A008F7632 /* RestaurantService.swift */,
 				0979FA1B2622D7C2008F7632 /* RestaurantsListModel.swift */,
 				0979FA1E2622D951008F7632 /* RestaurantListModel.swift */,
