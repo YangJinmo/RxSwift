@@ -1,6 +1,6 @@
 //
 //  Restaurant.swift
-//  MVVMRxSwift
+//  iTunesExplorer
 //
 //  Created by YangJinMo on 2021/04/09.
 //
