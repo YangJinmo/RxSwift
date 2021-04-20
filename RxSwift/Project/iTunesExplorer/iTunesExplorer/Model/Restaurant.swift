@@ -10,6 +10,10 @@ import Foundation
 struct Restaurant: Decodable {
   let name: String
   let cuisine: Cuisine
+  
+  var displayText: String {
+    return name + " - " + cuisine.rawValue.capitalized
+  }
 }
 
 enum Cuisine: String, Decodable {
