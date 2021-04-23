@@ -9,23 +9,23 @@ import UIKit
 
 class AppContainer {
   
+  // MARK: - Constants
+  
   static let instance: AppContainer = AppContainer()
   
-  private lazy var restaurantService: RestaurantServiceProtocol = RestaurantService()
+  // MARK: - Variables And Properties
   
-  private var restaurantListViewModel: RestaurantsListViewModel {
-    return RestaurantsListViewModel(restaurantService: self.restaurantService)
+  private lazy var queryService: QueryServiceProtocol = QueryService()
+  
+  // MARK: - Private Properties
+  
+  private var searchViewModel: SearchViewModel {
+    return SearchViewModel(queryService: queryService)
   }
   
-  var restaurantListViewController: RestaurantsListViewController {
-    let storyboard = UIStoryboard(name: "Main", bundle: .main)
-    let viewController = storyboard.instantiateInitialViewController() as! RestaurantsListViewController
-    viewController.viewModel = self.restaurantListViewModel // field injection
-    // RestaurantsListViewController(viewModel: self.restaurantListViewModel) // constructor based injection
-    return viewController 
-  }
+  // MARK: - Internal Properties
   
-  private init() {
-    
+  var searchViewController: SearchViewController {
+    return SearchViewController(viewModel: searchViewModel)
   }
 }

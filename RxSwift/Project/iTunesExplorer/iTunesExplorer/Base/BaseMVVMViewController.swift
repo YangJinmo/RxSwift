@@ -10,8 +10,26 @@ import RxSwift
 
 class BaseMVVMViewController<VM: BaseViewModel>: UIViewController {
   
+  // MARK: - Constants
+  
   let disposeBag: DisposeBag = DisposeBag()
-  var viewModel: VM!
+  
+  // MARK: - Variables And Properties
+  
+  var viewModel: VM
+  
+  // MARK: - Initialization
+  
+  init(viewModel: VM) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  // MARK: - View Controller
   
   override func viewDidLoad() {
     super.viewDidLoad()

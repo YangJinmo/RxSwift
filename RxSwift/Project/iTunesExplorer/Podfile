@@ -8,6 +8,8 @@ target 'iTunesExplorer' do
   # Pods for iTunesExplorer
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'Then'
+  pod 'SnapKit'
 
   target 'iTunesExplorerTests' do
     inherit! :search_paths
