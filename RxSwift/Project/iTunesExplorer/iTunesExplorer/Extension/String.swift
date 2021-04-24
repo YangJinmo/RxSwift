@@ -9,8 +9,8 @@ import UIKit
 
 extension String {
   
-  func log(function: String = #function, _ value: Any = "", _ comment: String = "") {
-    print("func \(function) \(comment) \(self)")
+  func log(function: String = #function, _ comment: String = "") {
+    print("func \(function) \(comment)\(self)")
   }
   
   var toURL: URL? {
