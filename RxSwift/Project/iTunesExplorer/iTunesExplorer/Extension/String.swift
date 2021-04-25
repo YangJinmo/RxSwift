@@ -14,7 +14,6 @@ extension String {
   }
   
   var toURL: URL? {
-    guard isEmpty else { return URL(string: self) }
-    return nil
+    return URL(string: self)
   }
 }

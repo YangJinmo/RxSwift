@@ -35,7 +35,7 @@ class SearchViewController: BaseMVVMViewController<SearchViewModel> {
   var searchResults: [Track] = []
   
   lazy var tapRecognizer: UITapGestureRecognizer = {
-    var recognizer = UITapGestureRecognizer(target:self, action: #selector(dismissKeyboard))
+    var recognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
     return recognizer
   }()
   
@@ -86,10 +86,11 @@ class SearchViewController: BaseMVVMViewController<SearchViewModel> {
   }
   
   func playDownload(_ track: Track) {
+    guard let previewURL = track.previewURL else { return }
     let playerViewController = AVPlayerViewController()
     present(playerViewController, animated: true, completion: nil)
     
-    let url = localFilePath(for: track.previewURL)
+    let url = localFilePath(for: previewURL)
     let player = AVPlayer(url: url)
     playerViewController.player = player
     player.play()
@@ -178,8 +179,7 @@ extension SearchViewController: UISearchBarDelegate {
         trackCell.delegate = self
         trackCell.configure(
           track: viewModel,
-          downloaded: viewModel.downloaded,
-          download: self.downloadService.activeDownloads[viewModel.previewURL]
+          download: self.downloadService.activeDownloads[viewModel.previewURL!]
         )
       }
       .disposed(by: disposeBag)
@@ -227,9 +227,10 @@ extension SearchViewController: UICollectionViewDataSource {
     cell.delegate = self
     
     let track = searchResults[indexPath.row]
-    cell.configure(track: track,
-                   downloaded: track.downloaded,
-                   download: downloadService.activeDownloads[track.previewURL])
+    cell.configure(
+      track: track,
+      download: downloadService.activeDownloads[track.previewURL!]
+    )
     
     return cell
   }

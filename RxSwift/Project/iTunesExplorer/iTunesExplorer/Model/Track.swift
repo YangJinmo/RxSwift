@@ -12,10 +12,10 @@ class Track: Decodable {
   
   // MARK: - Constants
   
-  let name: String
-  let artist: String
-  let albumURL: URL
-  let previewURL: URL
+  let name: String?
+  let artist: String?
+  let albumURL: URL?
+  let previewURL: URL?
   let index: Int
   
   // MARK: - Variables And Properties
@@ -24,7 +24,7 @@ class Track: Decodable {
   
   // MARK: - Initialization
   
-  init(name: String, artist: String, albumURL: URL, previewURL: URL, index: Int) {
+  init(name: String?, artist: String?, albumURL: URL?, previewURL: URL?, index: Int) {
     self.name = name
     self.artist = artist
     self.albumURL = albumURL

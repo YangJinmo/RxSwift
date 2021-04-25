@@ -21,38 +21,45 @@ class DownloadService {
   // MARK: - Internal Methods
   
   func cancelDownload(_ track: Track) {
-    guard let download = activeDownloads[track.previewURL] else {
+    guard
+      let previewURL = track.previewURL,
+      let download = activeDownloads[previewURL]
+    else {
       return
     }
     download.task?.cancel()
-
-    activeDownloads[track.previewURL] = nil
+    
+    activeDownloads[previewURL] = nil
   }
   
   func pauseDownload(_ track: Track) {
     guard
-      let download = activeDownloads[track.previewURL],
-      download.isDownloading
-      else {
-        return
+      let previewURL = track.previewURL,
+      let download = activeDownloads[previewURL], download.isDownloading
+    else {
+      return
     }
     
     download.task?.cancel(byProducingResumeData: { data in
       download.resumeData = data
     })
-
+    
     download.isDownloading = false
   }
   
   func resumeDownload(_ track: Track) {
-    guard let download = activeDownloads[track.previewURL] else {
+    guard
+      let previewURL = track.previewURL,
+      let download = activeDownloads[previewURL],
+      let downloadURL = download.track.previewURL
+    else {
       return
     }
     
     if let resumeData = download.resumeData {
       download.task = downloadsSession.downloadTask(withResumeData: resumeData)
     } else {
-      download.task = downloadsSession.downloadTask(with: download.track.previewURL)
+      download.task = downloadsSession.downloadTask(with: downloadURL)
     }
     
     download.task?.resume()
@@ -60,15 +67,17 @@ class DownloadService {
   }
   
   func startDownload(_ track: Track) {
-    // 1
     let download = Download(track: track)
-    // 2
-    download.task = downloadsSession.downloadTask(with: track.previewURL)
-    // 3
+    guard
+      let previewURL = track.previewURL,
+      let downloadURL = download.track.previewURL
+    else {
+      return
+    }
+    download.task = downloadsSession.downloadTask(with: previewURL)
     download.task?.resume()
-    // 4
     download.isDownloading = true
-    // 5
-    activeDownloads[download.track.previewURL] = download
+    
+    activeDownloads[downloadURL] = download
   }
 }

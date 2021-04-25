@@ -275,10 +275,10 @@
 				09A78D3426308A1100412247 /* UIScreen.swift */,
 				09A78D0E2630629800412247 /* UIView.swift */,
 				09A78D16263062C200412247 /* UIButton.swift */,
+				09A78D452632567900412247 /* UIImageView.swift */,
 				09A78D1B263062E700412247 /* UIColor.swift */,
 				09A78D202630630600412247 /* CGColor.swift */,
 				09A78D4026310D3E00412247 /* String.swift */,
-				09A78D452632567900412247 /* UIImageView.swift */,
 				09A78D4C2632CB3E00412247 /* NSObject.swift */,
 			);
 			path = Extension;

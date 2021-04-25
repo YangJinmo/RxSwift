@@ -169,11 +169,10 @@ class TrackCell: BaseCollectionViewCell {
   
   // MARK: - Internal Methods
   
-  func configure(track: Track, downloaded: Bool, download: Download?) {
+  func configure(track: Track, download: Download?) {
     
-    // 싱글 쓰레드로 작동되기 때문에 이미지를 다운로드 받기까지 잠깐의 멈춤이 생길 수 있다.
-    // DispatchQueue를 사용하면 멀티 쓰레드로 동작하여 멈춤이 생기지 않는다.
     albumImageView.setImage(url: track.albumURL)
+    //albumImageView.downloadImage(url: track.albumURL)
     
     titleLabel.text = track.name
     artistLabel.text = track.artist
@@ -198,9 +197,9 @@ class TrackCell: BaseCollectionViewCell {
     progressLabel.isHidden = !showDownloadControls
     
     // If the track is already downloaded, enable cell selection and hide the Download button.
-    //selectionStyle = downloaded ? UITableViewCell.SelectionStyle.gray : UITableViewCell.SelectionStyle.none
+    //selectionStyle = track.downloaded ? UITableViewCell.SelectionStyle.gray : UITableViewCell.SelectionStyle.none
     
-    let flag = downloaded || showDownloadControls
+    let flag = track.downloaded || showDownloadControls
     downloadButton.isHidden = flag
     //downloadButton.isEnabled = !flag
     //downloadButton.setTitle(flag ? "Play" : "Download", for: .normal)

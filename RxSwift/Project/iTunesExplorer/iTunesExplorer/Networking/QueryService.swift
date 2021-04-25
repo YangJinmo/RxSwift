@@ -52,8 +52,7 @@ class QueryService: QueryServiceProtocol {
           self?.errorMessage += "DataTask error: " + error.localizedDescription + "\n"
         } else if
           let data = data,
-          let response = response as? HTTPURLResponse,
-          response.statusCode == 200 {
+          let response = response as? HTTPURLResponse, response.statusCode == 200 {
           
           self?.updateSearchResults(data)
           
@@ -133,12 +132,12 @@ class QueryService: QueryServiceProtocol {
               self?.tracks.append(track)
               index += 1
               /*
-              do {
-                let track = try JSONDecoder().decode([Track].self, from: data)
-                observer.onNext(self?.tracks ?? [])
-              } catch {
-                observer.onError(error)
-              }
+               do {
+               let track = try JSONDecoder().decode([Track].self, from: data)
+               observer.onNext(self?.tracks ?? [])
+               } catch {
+               observer.onError(error)
+               }
                */
             } else {
               observer.onError(NSError(domain: "Problem parsing trackDictionary\n", code: -1, userInfo: nil))
@@ -176,26 +175,28 @@ class QueryService: QueryServiceProtocol {
     var index = 0
     
     for trackDictionary in array {
-      if let trackDictionary = trackDictionary as? JSONDictionary,
-         let previewURLString = trackDictionary["previewUrl"] as? String,
-         let previewURL = previewURLString.toURL,
-         let name = trackDictionary["trackName"] as? String,
-         let artist = trackDictionary["artistName"] as? String,
-         let albumURLString = trackDictionary["artworkUrl100"] as? String,
-         let albumURL = albumURLString.toURL {
-        
-        let track = Track(
-          name: name,
-          artist: artist,
-          albumURL: albumURL,
-          previewURL: previewURL,
-          index: index
-        )
-        tracks.append(track)
-        index += 1
-      } else {
+      guard
+        let trackDictionary = trackDictionary as? JSONDictionary,
+        let name: String = trackDictionary["trackName"] as? String,
+        let artist: String = trackDictionary["artistName"] as? String
+        //let artworkUrlString: String = trackDictionary["artworkUrl100"] as? String,
+        //let artworkUrl: URL? = (trackDictionary["artworkUrl100"] as? String).flatMap {URL(string: $0)},
+        //let previewUrlString: String = trackDictionary["previewUrl"] as? String,
+        //let previewUrl: URL? = (trackDictionary["previewUrl"] as? String).flatMap { URL(string: $0) }
+      else {
         errorMessage += "Problem parsing trackDictionary\n"
+        return
       }
+      
+      let track = Track(
+        name: trackDictionary["trackName"] as? String,
+        artist: trackDictionary["artistName"] as? String,
+        albumURL: (trackDictionary["artworkUrl100"] as? String).flatMap { URL(string: $0) },
+        previewURL: (trackDictionary["previewUrl"] as? String).flatMap { URL(string: $0) },
+        index: index
+      )
+      tracks.append(track)
+      index += 1
     }
   }
 }
