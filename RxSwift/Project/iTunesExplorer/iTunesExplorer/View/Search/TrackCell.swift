@@ -171,11 +171,11 @@ class TrackCell: BaseCollectionViewCell {
   
   func configure(track: Track, download: Download?) {
     
-    albumImageView.setImage(url: track.albumURL)
-    //albumImageView.downloadImage(url: track.albumURL)
+    albumImageView.setImage(url: track.artworkUrl100)
+    //albumImageView.downloadImage(url: track.artworkUrl100)
     
-    titleLabel.text = track.name
-    artistLabel.text = track.artist
+    titleLabel.text = track.trackName
+    artistLabel.text = track.artistName
     
     // Show/hide download controls Pause/Resume, Cancel buttons, progress info.
     var showDownloadControls = false

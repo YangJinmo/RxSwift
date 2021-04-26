@@ -22,20 +22,20 @@ class DownloadService {
   
   func cancelDownload(_ track: Track) {
     guard
-      let previewURL = track.previewURL,
-      let download = activeDownloads[previewURL]
+      let previewUrl = track.previewUrl,
+      let download = activeDownloads[previewUrl]
     else {
       return
     }
     download.task?.cancel()
     
-    activeDownloads[previewURL] = nil
+    activeDownloads[previewUrl] = nil
   }
   
   func pauseDownload(_ track: Track) {
     guard
-      let previewURL = track.previewURL,
-      let download = activeDownloads[previewURL], download.isDownloading
+      let previewUrl = track.previewUrl,
+      let download = activeDownloads[previewUrl], download.isDownloading
     else {
       return
     }
@@ -49,9 +49,9 @@ class DownloadService {
   
   func resumeDownload(_ track: Track) {
     guard
-      let previewURL = track.previewURL,
-      let download = activeDownloads[previewURL],
-      let downloadURL = download.track.previewURL
+      let previewUrl = track.previewUrl,
+      let download = activeDownloads[previewUrl],
+      let downloadUrl = download.track.previewUrl
     else {
       return
     }
@@ -59,7 +59,7 @@ class DownloadService {
     if let resumeData = download.resumeData {
       download.task = downloadsSession.downloadTask(withResumeData: resumeData)
     } else {
-      download.task = downloadsSession.downloadTask(with: downloadURL)
+      download.task = downloadsSession.downloadTask(with: downloadUrl)
     }
     
     download.task?.resume()
@@ -69,15 +69,15 @@ class DownloadService {
   func startDownload(_ track: Track) {
     let download = Download(track: track)
     guard
-      let previewURL = track.previewURL,
-      let downloadURL = download.track.previewURL
+      let previewUrl = track.previewUrl,
+      let downloadUrl = download.track.previewUrl
     else {
       return
     }
-    download.task = downloadsSession.downloadTask(with: previewURL)
+    download.task = downloadsSession.downloadTask(with: previewUrl)
     download.task?.resume()
     download.isDownloading = true
     
-    activeDownloads[downloadURL] = download
+    activeDownloads[downloadUrl] = download
   }
 }

@@ -91,7 +91,10 @@ class QueryService: QueryServiceProtocol {
         if let error = error {
           observer.onError(NSError(domain: "error: \(error.localizedDescription)", code: -1, userInfo: nil))
         } else {
-          guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+          guard
+            let data = data,
+            let response = response as? HTTPURLResponse, response.statusCode == 200
+          else {
             observer.onError(NSError(domain: "error: data", code: -1, userInfo: nil))
             return
           }
@@ -106,42 +109,29 @@ class QueryService: QueryServiceProtocol {
             return
           }
           
-          guard let array = jsonDictionary!["results"] as? [Any] else {
+          guard let results = jsonDictionary!["results"] as? [Any] else {
             observer.onError(NSError(domain: "Dictionary does not contain results key\n", code: -1, userInfo: nil))
             return
           }
           
           var index = 0
           
-          for trackDictionary in array {
-            if let trackDictionary = trackDictionary as? JSONDictionary,
-               let previewURLString = trackDictionary["previewUrl"] as? String,
-               let previewURL = URL(string: previewURLString),
-               let name = trackDictionary["trackName"] as? String,
-               let artist = trackDictionary["artistName"] as? String,
-               let albumURLString = trackDictionary["artworkUrl100"] as? String,
-               let albumURL = URL(string: albumURLString) {
-              
-              let track = Track(
-                name: name,
-                artist: artist,
-                albumURL: albumURL,
-                previewURL: previewURL,
-                index: index
-              )
-              self?.tracks.append(track)
-              index += 1
-              /*
-               do {
-               let track = try JSONDecoder().decode([Track].self, from: data)
-               observer.onNext(self?.tracks ?? [])
-               } catch {
-               observer.onError(error)
-               }
-               */
-            } else {
+          for trackDictionary in results {
+            guard let trackDictionary = trackDictionary as? JSONDictionary else {
               observer.onError(NSError(domain: "Problem parsing trackDictionary\n", code: -1, userInfo: nil))
+              return
             }
+            let track = Track(json: trackDictionary, index: index)
+            self?.tracks.append(track)
+            index += 1
+            /*
+            do {
+              let track = try JSONDecoder().decode([Track].self, from: data)
+              observer.onNext(self?.tracks ?? [])
+            } catch {
+              observer.onError(error)
+            }
+             */
           }
         }
       }
@@ -167,37 +157,27 @@ class QueryService: QueryServiceProtocol {
       return
     }
     
-    guard let array = response!["results"] as? [Any] else {
+    guard let results = response!["results"] as? [Any] else {
       errorMessage += "Dictionary does not contain results key\n"
       return
     }
     
     var index = 0
     
-    for trackDictionary in array {
-      guard
-        let trackDictionary = trackDictionary as? JSONDictionary,
-        let name: String = trackDictionary["trackName"] as? String,
-        let artist: String = trackDictionary["artistName"] as? String
-        //let artworkUrlString: String = trackDictionary["artworkUrl100"] as? String,
-        //let artworkUrl: URL? = (trackDictionary["artworkUrl100"] as? String).flatMap {URL(string: $0)},
-        //let previewUrlString: String = trackDictionary["previewUrl"] as? String,
-        //let previewUrl: URL? = (trackDictionary["previewUrl"] as? String).flatMap { URL(string: $0) }
-      else {
+    for trackDictionary in results {
+      guard let trackDictionary = trackDictionary as? JSONDictionary else {
         errorMessage += "Problem parsing trackDictionary\n"
         return
       }
-      
-      let track = Track(
-        name: trackDictionary["trackName"] as? String,
-        artist: trackDictionary["artistName"] as? String,
-        albumURL: (trackDictionary["artworkUrl100"] as? String).flatMap { URL(string: $0) },
-        previewURL: (trackDictionary["previewUrl"] as? String).flatMap { URL(string: $0) },
-        index: index
-      )
+      let track = Track(json: trackDictionary, index: index)
       tracks.append(track)
       index += 1
     }
   }
+  
+//  func parse(_ json: [String : Any]) -> [Track]? {
+//    let results = json["results"] as? [[String: Any]]
+//    return results?.compactMap(Track.init)
+//  }
 }
 

@@ -86,7 +86,7 @@ class SearchViewController: BaseMVVMViewController<SearchViewModel> {
   }
   
   func playDownload(_ track: Track) {
-    guard let previewURL = track.previewURL else { return }
+    guard let previewURL = track.previewUrl else { return }
     let playerViewController = AVPlayerViewController()
     present(playerViewController, animated: true, completion: nil)
     
@@ -157,7 +157,7 @@ extension SearchViewController: UISearchBarDelegate {
         self?.collectionView.delegate = self
         self?.collectionView.dataSource = self
         self?.collectionView.reloadData()
-        self?.collectionView.setContentOffset(CGPoint.zero, animated: false)
+        self?.collectionView.setContentOffset(.zero, animated: false)
       }
       
       if !errorMessage.isEmpty {
@@ -176,10 +176,11 @@ extension SearchViewController: UISearchBarDelegate {
       .drive(collectionView.rx.items(cellIdentifier: TrackCell.description)) { index, viewModel, cell in
         
         guard let trackCell: TrackCell = cell as? TrackCell else { return }
+        guard let previewUrl = viewModel.previewUrl else { return }
         trackCell.delegate = self
         trackCell.configure(
           track: viewModel,
-          download: self.downloadService.activeDownloads[viewModel.previewURL!]
+          download: self.downloadService.activeDownloads[previewUrl]
         )
       }
       .disposed(by: disposeBag)
@@ -223,14 +224,10 @@ extension SearchViewController: UICollectionViewDataSource {
     
     let cell: TrackCell = collectionView.dequeueReusableCell(withReuseIdentifier: TrackCell.description, for: indexPath) as! TrackCell
     
-    // Delegate cell button tap events to this view controller.
-    cell.delegate = self
-    
     let track = searchResults[indexPath.row]
-    cell.configure(
-      track: track,
-      download: downloadService.activeDownloads[track.previewURL!]
-    )
+    guard let previewUrl = track.previewUrl else { return cell }
+    cell.configure(track: track, download: downloadService.activeDownloads[previewUrl])
+    cell.delegate = self
     
     return cell
   }
@@ -311,7 +308,8 @@ extension SearchViewController: URLSessionDownloadDelegate {
     
     if let index = download?.track.index {
       DispatchQueue.main.async { [weak self] in
-        self?.collectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
+        let indexPath: IndexPath = IndexPath(row: index, section: 0)
+        self?.collectionView.reloadItems(at: [indexPath])
       }
     }
   }
@@ -329,8 +327,12 @@ extension SearchViewController: URLSessionDownloadDelegate {
     
     let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite, countStyle: .file)
     
+    let index = searchResults.firstIndex { $0.previewUrl == download.track.previewUrl }
+    print(index ?? "", download.track.index)
+    
     DispatchQueue.main.async {
-      if let trackCell = self.collectionView.cellForItem(at: IndexPath(row: download.track.index, section: 0)) as? TrackCell {
+      let indexPath: IndexPath = IndexPath(row: download.track.index, section: 0)
+      if let trackCell = self.collectionView.cellForItem(at: indexPath) as? TrackCell {
         trackCell.updateDisplay(progress: download.progress, totalSize: totalSize)
       }
     }
