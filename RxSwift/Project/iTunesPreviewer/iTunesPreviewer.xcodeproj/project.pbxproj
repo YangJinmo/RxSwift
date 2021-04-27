@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -118,14 +118,16 @@
 		0945259A263837E700D2995A /* iTunesPreviewer */ = {
 			isa = PBXGroup;
 			children = (
-				0945259B263837E700D2995A /* AppDelegate.swift */,
-				0945259D263837E700D2995A /* SceneDelegate.swift */,
-				0945259F263837E700D2995A /* ViewController.swift */,
-				094525A1263837E700D2995A /* Main.storyboard */,
-				094525A7263837E800D2995A /* Assets.xcassets */,
-				094525A9263837E800D2995A /* LaunchScreen.storyboard */,
-				094525AC263837E800D2995A /* Info.plist */,
-				094525A4263837E700D2995A /* iTunesPreviewer.xcdatamodeld */,
+				094525F026386A1A00D2995A /* Application */,
+				094525F726386B9000D2995A /* Networking */,
+				094525E92638696200D2995A /* Models */,
+				094525E82638695B00D2995A /* ViewModels */,
+				094525E72638695500D2995A /* Views */,
+				094525EB263869D100D2995A /* Utilities */,
+				094525EA2638699C00D2995A /* Extensions */,
+				094525EC263869DE00D2995A /* Storyboards */,
+				094525E02638687C00D2995A /* Resources */,
+				094525DF263867CD00D2995A /* Supporting Files */,
 			);
 			path = iTunesPreviewer;
 			sourceTree = "<group>";
@@ -148,6 +150,92 @@
 			path = iTunesPreviewerUITests;
 			sourceTree = "<group>";
 		};
+		094525DF263867CD00D2995A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				094525AC263837E800D2995A /* Info.plist */,
+				094525A4263837E700D2995A /* iTunesPreviewer.xcdatamodeld */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		094525E02638687C00D2995A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				094525A7263837E800D2995A /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		094525E72638695500D2995A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0945259F263837E700D2995A /* ViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		094525E82638695B00D2995A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		094525E92638696200D2995A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		094525EA2638699C00D2995A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		094525EB263869D100D2995A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		094525EC263869DE00D2995A /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				094525A1263837E700D2995A /* Main.storyboard */,
+				094525A9263837E800D2995A /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		094525F026386A1A00D2995A /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				0945259B263837E700D2995A /* AppDelegate.swift */,
+				0945259D263837E700D2995A /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		094525F726386B9000D2995A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				094525F926386CA100D2995A /* Services */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		094525F926386CA100D2995A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		AE810B486550A0C33A7D4B87 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,7 +256,6 @@
 				A7FE392BF360B7C337599D53 /* Pods-iTunesPreviewerTests.debug.xcconfig */,
 				2C16A93C5BD294AAE1F7452F /* Pods-iTunesPreviewerTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -592,7 +679,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YAHW75YBYW;
-				INFOPLIST_FILE = iTunesPreviewer/Info.plist;
+				INFOPLIST_FILE = "iTunesPreviewer/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -612,7 +699,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YAHW75YBYW;
-				INFOPLIST_FILE = iTunesPreviewer/Info.plist;
+				INFOPLIST_FILE = "iTunesPreviewer/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
