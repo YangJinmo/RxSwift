@@ -45,8 +45,8 @@ extension UIImageView {
   
   func setImageSynchronously(resource: String, type: String = "jpg") {
     guard
-      let filePath = Bundle.main.path(forResource: resource, ofType: type),
-      let image = UIImage(contentsOfFile: filePath)
+      let filePath: String = Bundle.main.path(forResource: resource, ofType: type),
+      let image: UIImage = UIImage(contentsOfFile: filePath)
     else {
       return
     }

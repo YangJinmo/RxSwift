@@ -138,6 +138,18 @@ class SearchViewController: BaseMVVMViewController<SearchViewModel> {
   
   private func configureGesture() {
     searchBar.delegate = self
+    
+//    searchBar.rx.text.orEmpty
+//      .debounce(RxTimeInterval.microseconds(5), scheduler: MainScheduler.instance) //0.5초 기다림
+//      .distinctUntilChanged() // 같은 아이템을 받지 않는 기능
+//      .subscribe(onNext: { keyword in
+//        //self.searchResults = self.samples.filter { $0.hasPrefix(keyword) }
+//        self.collectionView.reloadData()
+//      })
+//      .disposed(by: disposeBag)
+    
+//    searchBar.rx.setDelegate(self)
+//      .disposed(by: disposeBag)
   }
 }
 
@@ -151,7 +163,7 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     queryService.getSearchResults(searchTerm: searchText) { [weak self] results, errorMessage in
-      
+
       if let results = results {
         self?.searchResults = results
         self?.collectionView.delegate = self
@@ -159,7 +171,7 @@ extension SearchViewController: UISearchBarDelegate {
         self?.collectionView.reloadData()
         self?.collectionView.setContentOffset(.zero, animated: false)
       }
-      
+
       if !errorMessage.isEmpty {
         print("Search error: " + errorMessage)
       }
@@ -174,9 +186,12 @@ extension SearchViewController: UISearchBarDelegate {
     viewModel.track
       .asDriver()
       .drive(collectionView.rx.items(cellIdentifier: TrackCell.description)) { index, viewModel, cell in
-        
-        guard let trackCell: TrackCell = cell as? TrackCell else { return }
-        guard let previewUrl = viewModel.previewUrl else { return }
+        guard
+          let trackCell: TrackCell = cell as? TrackCell,
+          let previewUrl = viewModel.previewUrl
+        else {
+          return
+        }
         trackCell.delegate = self
         trackCell.configure(
           track: viewModel,
@@ -184,6 +199,15 @@ extension SearchViewController: UISearchBarDelegate {
         )
       }
       .disposed(by: disposeBag)
+    
+//    collectionView.rx.itemSelected
+//      .subscribe(onNext: { index in
+//        print("\(index.section) \(index.row)")
+//      })
+//      .disposed(by: disposeBag)
+//
+//    collectionView.rx.setDelegate(self)
+//      .disposed(by: disposeBag)
   }
   
   func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -317,9 +341,10 @@ extension SearchViewController: URLSessionDownloadDelegate {
   func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,
                   didWriteData bytesWritten: Int64, totalBytesWritten: Int64,
                   totalBytesExpectedToWrite: Int64) {
-    
-    guard let url = downloadTask.originalRequest?.url,
-          let download = downloadService.activeDownloads[url] else {
+    guard
+      let url = downloadTask.originalRequest?.url,
+      let download = downloadService.activeDownloads[url]
+    else {
       return
     }
     
@@ -327,10 +352,17 @@ extension SearchViewController: URLSessionDownloadDelegate {
     
     let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite, countStyle: .file)
     
-    let index = searchResults.firstIndex { $0.previewUrl == download.track.previewUrl }
-    print(index ?? "", download.track.index)
+//    let index = searchResults.firstIndex { $0.previewUrl == download.track.previewUrl }
+//    let searchResultsIndex = index ?? -1
+//    
+//    guard searchResults.indices.contains(searchResultsIndex) else {
+//      print("searchResults isIndexValid = false")
+//      return
+//    }
+//    "\(searchResultsIndex)".log()
     
     DispatchQueue.main.async {
+      //let indexPath: IndexPath = IndexPath(row: searchResultsIndex, section: 0)
       let indexPath: IndexPath = IndexPath(row: download.track.index, section: 0)
       if let trackCell = self.collectionView.cellForItem(at: indexPath) as? TrackCell {
         trackCell.updateDisplay(progress: download.progress, totalSize: totalSize)

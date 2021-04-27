@@ -11,9 +11,11 @@ import RxRelay
 
 final class SearchViewModel: BaseViewModel {
   
-  // MARK: - Constants
+  // MARK: - Private Constants
   
   private let queryService: QueryServiceProtocol
+  
+  // MARK: - Constants
   
   let title: BehaviorRelay<String> = .init(value: "SearchViewModel")
   let track: BehaviorRelay<[Track]> = .init(value: [])

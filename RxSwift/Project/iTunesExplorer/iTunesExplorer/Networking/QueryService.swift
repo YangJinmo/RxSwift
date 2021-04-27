@@ -124,15 +124,15 @@ class QueryService: QueryServiceProtocol {
             let track = Track(json: trackDictionary, index: index)
             self?.tracks.append(track)
             index += 1
-            /*
-            do {
-              let track = try JSONDecoder().decode([Track].self, from: data)
-              observer.onNext(self?.tracks ?? [])
-            } catch {
-              observer.onError(error)
-            }
-             */
           }
+          observer.onNext(self?.tracks ?? [])
+          
+//          do {
+//            let track = try JSONDecoder().decode([Track].self, from: data)
+//            observer.onNext(self?.tracks ?? [])
+//          } catch {
+//            observer.onError(error)
+//          }
         }
       }
       
