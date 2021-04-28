@@ -1,8 +1,8 @@
 //
 //  CGColor.swift
-//  iTunesExplorer
+//  iTunesPreviewer
 //
-//  Created by YangJinMo on 2021/04/21.
+//  Created by YangJinMo on 2021/04/28.
 //
 
 import UIKit

@@ -9,13 +9,33 @@
 /* Begin PBXBuildFile section */
 		0945259C263837E700D2995A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945259B263837E700D2995A /* AppDelegate.swift */; };
 		0945259E263837E700D2995A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945259D263837E700D2995A /* SceneDelegate.swift */; };
-		094525A0263837E700D2995A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945259F263837E700D2995A /* ViewController.swift */; };
-		094525A3263837E700D2995A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 094525A1263837E700D2995A /* Main.storyboard */; };
 		094525A6263837E700D2995A /* iTunesPreviewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 094525A4263837E700D2995A /* iTunesPreviewer.xcdatamodeld */; };
 		094525A8263837E800D2995A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 094525A7263837E800D2995A /* Assets.xcassets */; };
 		094525AB263837E800D2995A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 094525A9263837E800D2995A /* LaunchScreen.storyboard */; };
 		094525B6263837E800D2995A /* iTunesPreviewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094525B5263837E800D2995A /* iTunesPreviewerTests.swift */; };
 		094525C1263837E900D2995A /* iTunesPreviewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094525C0263837E900D2995A /* iTunesPreviewerUITests.swift */; };
+		09452634263874AC00D2995A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09452633263874AC00D2995A /* UIColor.swift */; };
+		0945263C2638758E00D2995A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945263B2638758E00D2995A /* AppCoordinator.swift */; };
+		09452642263875BC00D2995A /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09452641263875BC00D2995A /* AppContainer.swift */; };
+		0945264D2638762F00D2995A /* BaseMVVMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945264C2638762F00D2995A /* BaseMVVMViewController.swift */; };
+		094526522638764800D2995A /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526512638764800D2995A /* BaseViewModel.swift */; };
+		0945265A2638768E00D2995A /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526592638768E00D2995A /* BaseCollectionViewCell.swift */; };
+		0945265F2638774600D2995A /* QueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945265E2638774600D2995A /* QueryService.swift */; };
+		094526692638778C00D2995A /* MusicsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526682638778C00D2995A /* MusicsViewModel.swift */; };
+		0945266E263877B900D2995A /* MusicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945266D263877B900D2995A /* MusicsViewController.swift */; };
+		094526762638784300D2995A /* MusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526752638784300D2995A /* MusicCell.swift */; };
+		0945267B2638788100D2995A /* CGColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945267A2638788100D2995A /* CGColor.swift */; };
+		09452680263878CB00D2995A /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945267F263878CB00D2995A /* UIScreen.swift */; };
+		09452685263878F500D2995A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09452684263878F500D2995A /* UIView.swift */; };
+		0945268A2638791600D2995A /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526892638791600D2995A /* UIImageView.swift */; };
+		0945268F2638793E00D2995A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945268E2638793E00D2995A /* String.swift */; };
+		094526942638795400D2995A /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526932638795400D2995A /* NSObject.swift */; };
+		094526AF26391AC300D2995A /* Musics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526AE26391AC300D2995A /* Musics.swift */; };
+		094526B726391CEF00D2995A /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526B626391CEF00D2995A /* PlayerViewController.swift */; };
+		094526CF2639400900D2995A /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526CE2639400900D2995A /* UIStackView.swift */; };
+		094526D7263944E800D2995A /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526D6263944E800D2995A /* BaseButton.swift */; };
+		094526F4263970D100D2995A /* MusicControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526F3263970D100D2995A /* MusicControlButton.swift */; };
+		0945270B263978A700D2995A /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945270A263978A700D2995A /* Music.swift */; };
 		1F8CDD5DF3269E24B839557C /* Pods_iTunesPreviewer_iTunesPreviewerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C283C20EB3C3B063ADA5A6 /* Pods_iTunesPreviewer_iTunesPreviewerUITests.framework */; };
 		5ECBDEDD583F88E7950FFE7D /* Pods_iTunesPreviewerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF21010FA611E692F1F3345 /* Pods_iTunesPreviewerTests.framework */; };
 		FB52CF69E64FB00F97D880E3 /* Pods_iTunesPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74EDAF88647CFF548A7EE253 /* Pods_iTunesPreviewer.framework */; };
@@ -42,8 +62,6 @@
 		09452598263837E700D2995A /* iTunesPreviewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesPreviewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0945259B263837E700D2995A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0945259D263837E700D2995A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0945259F263837E700D2995A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		094525A2263837E700D2995A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		094525A5263837E700D2995A /* iTunesPreviewer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iTunesPreviewer.xcdatamodel; sourceTree = "<group>"; };
 		094525A7263837E800D2995A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		094525AA263837E800D2995A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +72,28 @@
 		094525BC263837E900D2995A /* iTunesPreviewerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTunesPreviewerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		094525C0263837E900D2995A /* iTunesPreviewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesPreviewerUITests.swift; sourceTree = "<group>"; };
 		094525C2263837E900D2995A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09452633263874AC00D2995A /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		0945263B2638758E00D2995A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		09452641263875BC00D2995A /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		0945264C2638762F00D2995A /* BaseMVVMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMVVMViewController.swift; sourceTree = "<group>"; };
+		094526512638764800D2995A /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		094526592638768E00D2995A /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		0945265E2638774600D2995A /* QueryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryService.swift; sourceTree = "<group>"; };
+		094526682638778C00D2995A /* MusicsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicsViewModel.swift; sourceTree = "<group>"; };
+		0945266D263877B900D2995A /* MusicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicsViewController.swift; sourceTree = "<group>"; };
+		094526752638784300D2995A /* MusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCell.swift; sourceTree = "<group>"; };
+		0945267A2638788100D2995A /* CGColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGColor.swift; sourceTree = "<group>"; };
+		0945267F263878CB00D2995A /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
+		09452684263878F500D2995A /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		094526892638791600D2995A /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		0945268E2638793E00D2995A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		094526932638795400D2995A /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
+		094526AE26391AC300D2995A /* Musics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Musics.swift; sourceTree = "<group>"; };
+		094526B626391CEF00D2995A /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		094526CE2639400900D2995A /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
+		094526D6263944E800D2995A /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
+		094526F3263970D100D2995A /* MusicControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicControlButton.swift; sourceTree = "<group>"; };
+		0945270A263978A700D2995A /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		0E18B219958A1A37434D3FD0 /* Pods-iTunesPreviewer-iTunesPreviewerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesPreviewer-iTunesPreviewerUITests.release.xcconfig"; path = "Target Support Files/Pods-iTunesPreviewer-iTunesPreviewerUITests/Pods-iTunesPreviewer-iTunesPreviewerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2C16A93C5BD294AAE1F7452F /* Pods-iTunesPreviewerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesPreviewerTests.release.xcconfig"; path = "Target Support Files/Pods-iTunesPreviewerTests/Pods-iTunesPreviewerTests.release.xcconfig"; sourceTree = "<group>"; };
 		74EDAF88647CFF548A7EE253 /* Pods_iTunesPreviewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTunesPreviewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,11 +159,11 @@
 			isa = PBXGroup;
 			children = (
 				094525F026386A1A00D2995A /* Application */,
+				09452613263870C200D2995A /* Bases */,
 				094525F726386B9000D2995A /* Networking */,
 				094525E92638696200D2995A /* Models */,
 				094525E82638695B00D2995A /* ViewModels */,
 				094525E72638695500D2995A /* Views */,
-				094525EB263869D100D2995A /* Utilities */,
 				094525EA2638699C00D2995A /* Extensions */,
 				094525EC263869DE00D2995A /* Storyboards */,
 				094525E02638687C00D2995A /* Resources */,
@@ -170,7 +210,10 @@
 		094525E72638695500D2995A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0945259F263837E700D2995A /* ViewController.swift */,
+				0945266D263877B900D2995A /* MusicsViewController.swift */,
+				094526752638784300D2995A /* MusicCell.swift */,
+				094526B626391CEF00D2995A /* PlayerViewController.swift */,
+				094526F3263970D100D2995A /* MusicControlButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -178,6 +221,7 @@
 		094525E82638695B00D2995A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				094526682638778C00D2995A /* MusicsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -185,6 +229,8 @@
 		094525E92638696200D2995A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				094526AE26391AC300D2995A /* Musics.swift */,
+				0945270A263978A700D2995A /* Music.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -192,21 +238,21 @@
 		094525EA2638699C00D2995A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				09452633263874AC00D2995A /* UIColor.swift */,
+				0945267A2638788100D2995A /* CGColor.swift */,
+				0945267F263878CB00D2995A /* UIScreen.swift */,
+				09452684263878F500D2995A /* UIView.swift */,
+				094526CE2639400900D2995A /* UIStackView.swift */,
+				094526892638791600D2995A /* UIImageView.swift */,
+				0945268E2638793E00D2995A /* String.swift */,
+				094526932638795400D2995A /* NSObject.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		094525EB263869D100D2995A /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utilities;
 			sourceTree = "<group>";
 		};
 		094525EC263869DE00D2995A /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				094525A1263837E700D2995A /* Main.storyboard */,
 				094525A9263837E800D2995A /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -217,6 +263,8 @@
 			children = (
 				0945259B263837E700D2995A /* AppDelegate.swift */,
 				0945259D263837E700D2995A /* SceneDelegate.swift */,
+				09452641263875BC00D2995A /* AppContainer.swift */,
+				0945263B2638758E00D2995A /* AppCoordinator.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -232,8 +280,20 @@
 		094525F926386CA100D2995A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				0945265E2638774600D2995A /* QueryService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		09452613263870C200D2995A /* Bases */ = {
+			isa = PBXGroup;
+			children = (
+				0945264C2638762F00D2995A /* BaseMVVMViewController.swift */,
+				094526512638764800D2995A /* BaseViewModel.swift */,
+				094526592638768E00D2995A /* BaseCollectionViewCell.swift */,
+				094526D6263944E800D2995A /* BaseButton.swift */,
+			);
+			path = Bases;
 			sourceTree = "<group>";
 		};
 		AE810B486550A0C33A7D4B87 /* Frameworks */ = {
@@ -369,7 +429,6 @@
 			files = (
 				094525AB263837E800D2995A /* LaunchScreen.storyboard in Resources */,
 				094525A8263837E800D2995A /* Assets.xcassets in Resources */,
-				094525A3263837E700D2995A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,10 +556,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				094525A0263837E700D2995A /* ViewController.swift in Sources */,
+				0945268F2638793E00D2995A /* String.swift in Sources */,
+				0945263C2638758E00D2995A /* AppCoordinator.swift in Sources */,
+				09452634263874AC00D2995A /* UIColor.swift in Sources */,
+				094526F4263970D100D2995A /* MusicControlButton.swift in Sources */,
 				094525A6263837E700D2995A /* iTunesPreviewer.xcdatamodeld in Sources */,
 				0945259C263837E700D2995A /* AppDelegate.swift in Sources */,
+				094526692638778C00D2995A /* MusicsViewModel.swift in Sources */,
+				0945265A2638768E00D2995A /* BaseCollectionViewCell.swift in Sources */,
+				094526522638764800D2995A /* BaseViewModel.swift in Sources */,
+				09452680263878CB00D2995A /* UIScreen.swift in Sources */,
+				094526B726391CEF00D2995A /* PlayerViewController.swift in Sources */,
+				094526D7263944E800D2995A /* BaseButton.swift in Sources */,
+				094526762638784300D2995A /* MusicCell.swift in Sources */,
+				094526AF26391AC300D2995A /* Musics.swift in Sources */,
+				0945266E263877B900D2995A /* MusicsViewController.swift in Sources */,
+				0945268A2638791600D2995A /* UIImageView.swift in Sources */,
 				0945259E263837E700D2995A /* SceneDelegate.swift in Sources */,
+				0945270B263978A700D2995A /* Music.swift in Sources */,
+				0945265F2638774600D2995A /* QueryService.swift in Sources */,
+				09452642263875BC00D2995A /* AppContainer.swift in Sources */,
+				09452685263878F500D2995A /* UIView.swift in Sources */,
+				094526CF2639400900D2995A /* UIStackView.swift in Sources */,
+				0945267B2638788100D2995A /* CGColor.swift in Sources */,
+				094526942638795400D2995A /* NSObject.swift in Sources */,
+				0945264D2638762F00D2995A /* BaseMVVMViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,14 +616,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		094525A1263837E700D2995A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				094525A2263837E700D2995A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		094525A9263837E800D2995A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

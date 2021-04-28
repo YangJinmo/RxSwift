@@ -14,9 +14,7 @@ import RxSwift
 import RxCocoa
 import RxRelay
 
-// MARK: - Search View Controller
-
-class SearchViewController: BaseMVVMViewController<SearchViewModel> {
+final class SearchViewController: BaseMVVMViewController<SearchViewModel> {
   
   // MARK: - Constants
   

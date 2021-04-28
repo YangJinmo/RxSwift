@@ -14,7 +14,7 @@ protocol TrackCellDelegate {
   func resumeTapped(_ cell: TrackCell)
 }
 
-class TrackCell: BaseCollectionViewCell {
+final class TrackCell: BaseCollectionViewCell {
   
   // MARK: - UI
   
@@ -30,15 +30,15 @@ class TrackCell: BaseCollectionViewCell {
     $0.textColor = .secondaryLabel
   }
   private let cancelButton = UIButton().then {
-    $0.setTitleColor(UIColor.Theme.tintColor, for: .normal)
+    $0.setTitleColor(.tintColor, for: .normal)
     $0.setTitle("Cancel", for: .normal)
   }
   private let downloadButton = UIButton().then {
-    $0.setTitleColor(UIColor.Theme.tintColor, for: .normal)
+    $0.setTitleColor(.tintColor, for: .normal)
     $0.setTitle("Download", for: .normal)
   }
   private let pauseButton = UIButton().then {
-    $0.setTitleColor(UIColor.Theme.tintColor, for: .normal)
+    $0.setTitleColor(.tintColor, for: .normal)
     $0.setTitle("Pause", for: .normal)
   }
   private let progressLabel = UILabel().then {
@@ -47,7 +47,7 @@ class TrackCell: BaseCollectionViewCell {
     $0.textColor = .secondaryLabel
   }
   private let progressView = UIProgressView().then {
-    $0.progressTintColor = UIColor.Theme.tintColor
+    $0.progressTintColor = .tintColor
     $0.trackTintColor = .secondarySystemBackground
     $0.progress = 0.0
   }
@@ -126,7 +126,7 @@ class TrackCell: BaseCollectionViewCell {
       $0.width.equalTo(100)
     }
     dividerView.snp.makeConstraints {
-      $0.height.equalTo(0.5)
+      $0.height.equalTo(1)
       $0.left.right.bottom.equalTo(0)
     }
   }
@@ -203,7 +203,7 @@ class TrackCell: BaseCollectionViewCell {
     downloadButton.isHidden = flag
     //downloadButton.isEnabled = !flag
     //downloadButton.setTitle(flag ? "Play" : "Download", for: .normal)
-    //downloadButton.setTitleColor(flag ? UIColor.Theme.tintColor : .systemPurple, for: .normal)
+    //downloadButton.setTitleColor(flag ? .tintColor : .systemPurple, for: .normal)
   }
   
   func updateDisplay(progress: Float, totalSize : String) {

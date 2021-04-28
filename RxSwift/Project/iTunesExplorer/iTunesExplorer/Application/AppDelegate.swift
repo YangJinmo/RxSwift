@@ -9,11 +9,7 @@ import UIKit
 import CoreData
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
-  
-  // MARK: - Constants
-  
-  let tintColor: UIColor = UIColor.Theme.tintColor
+final class AppDelegate: UIResponder, UIApplicationDelegate {
   
   // MARK: - Variables And Properties
   
@@ -36,12 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   // MARK: - Private Methods
   
   private func customizeAppearance() {
-    window?.tintColor = tintColor
+    window?.tintColor = .tintColor
     
-    UISearchBar.appearance().barTintColor = tintColor
+    UISearchBar.appearance().barTintColor = .tintColor
     
-    UINavigationBar.appearance().barTintColor = tintColor
-    UINavigationBar.appearance().tintColor = UIColor.white
+    UINavigationBar.appearance().barTintColor = .tintColor
+    UINavigationBar.appearance().tintColor = .white
     
     let titleTextAttributes = [NSAttributedString.Key(rawValue: NSAttributedString.Key.foregroundColor.rawValue) : UIColor.white]
     UINavigationBar.appearance().titleTextAttributes = titleTextAttributes

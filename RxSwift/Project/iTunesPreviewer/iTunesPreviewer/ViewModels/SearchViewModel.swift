@@ -1,23 +1,28 @@
 //
 //  SearchViewModel.swift
-//  iTunesExplorer
+//  iTunesPreviewer
 //
-//  Created by YangJinMo on 2021/04/21.
+//  Created by YangJinMo on 2021/04/28.
 //
 
 import RxSwift
 import RxRelay
 
-final class SearchViewModel: BaseViewModel {
+final class MusicsViewModel: BaseViewModel {
   
   // MARK: - Private Constants
   
   private let queryService: QueryServiceProtocol
   
-  // MARK: - Constants
+  // MARK: - Private Variables
   
-  let title: BehaviorRelay<String> = .init(value: "SearchViewModel")
-  let track: BehaviorRelay<[Track]> = .init(value: [])
+  private var musics: PublishSubject<[Music]> = .init()
+  
+  // MARK: - Variables And Properties
+  
+  var musicsObservable: Observable<[Music]> {
+    return musics.asObservable()
+  }
   
   // MARK: - Initialization
   
@@ -27,13 +32,9 @@ final class SearchViewModel: BaseViewModel {
   
   // MARK: - Internal Methods
   
-  override func start() {
-    
-  }
-  
   func getSearchResults(searchTerm: String) {
     queryService.getSearchResults(searchTerm: searchTerm)
-      .bind(to: track)
+      .bind(to: musics)
       .disposed(by: disposeBag)
   }
 }

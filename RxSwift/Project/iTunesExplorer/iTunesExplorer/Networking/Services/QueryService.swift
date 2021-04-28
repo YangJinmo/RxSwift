@@ -5,7 +5,6 @@
 //  Created by YangJinMo on 2021/04/21.
 //
 
-import Foundation
 import RxSwift
 
 protocol QueryServiceProtocol {
@@ -90,14 +89,7 @@ class QueryService: QueryServiceProtocol {
         
         if let error = error {
           observer.onError(NSError(domain: "error: \(error.localizedDescription)", code: -1, userInfo: nil))
-        } else {
-          guard
-            let data = data,
-            let response = response as? HTTPURLResponse, response.statusCode == 200
-          else {
-            observer.onError(NSError(domain: "error: data", code: -1, userInfo: nil))
-            return
-          }
+        } else if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
           
           var jsonDictionary: JSONDictionary?
           self?.tracks.removeAll()
@@ -133,6 +125,8 @@ class QueryService: QueryServiceProtocol {
 //          } catch {
 //            observer.onError(error)
 //          }
+        } else {
+          searchTerm.log()
         }
       }
       

@@ -1,8 +1,8 @@
 //
 //  AppCoordinator.swift
-//  iTunesExplorer
+//  iTunesPreviewer
 //
-//  Created by YangJinMo on 2021/04/20.
+//  Created by YangJinMo on 2021/04/28.
 //
 
 import UIKit
@@ -22,7 +22,7 @@ final class AppCoordinator {
   // MARK: - Internal Methods
   
   func start() {
-    let viewController = AppContainer.instance.searchViewController
+    let viewController = AppContainer.instance.musicsViewController
     window.rootViewController = viewController
     window.makeKeyAndVisible()
   }

@@ -1,8 +1,8 @@
 //
 //  AppContainer.swift
-//  iTunesExplorer
+//  iTunesPreviewer
 //
-//  Created by YangJinMo on 2021/04/20.
+//  Created by YangJinMo on 2021/04/28.
 //
 
 import UIKit
@@ -17,13 +17,13 @@ final class AppContainer {
   
   private lazy var queryService: QueryServiceProtocol = QueryService()
   
-  private var searchViewModel: SearchViewModel {
-    return SearchViewModel(queryService: queryService)
+  private var musicsViewModel: MusicsViewModel {
+    return MusicsViewModel(queryService: queryService)
   }
   
   // MARK: - Internal Properties
   
-  var searchViewController: SearchViewController {
-    return SearchViewController(viewModel: searchViewModel)
+  var musicsViewController: MusicsViewController {
+    return MusicsViewController(viewModel: musicsViewModel)
   }
 }

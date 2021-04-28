@@ -1,8 +1,8 @@
 //
 //  String.swift
-//  iTunesExplorer
+//  iTunesPreviewer
 //
-//  Created by YangJinMo on 2021/04/22.
+//  Created by YangJinMo on 2021/04/28.
 //
 
 import Foundation
