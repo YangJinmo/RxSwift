@@ -53,8 +53,8 @@ class QueryService: QueryServiceProtocol {
           observer.onError(NSError(domain: "error: \(error.localizedDescription)", code: -1, userInfo: nil))
         } else if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
           do {
-            let searchResult = try JSONDecoder().decode(Musics.self, from: data)
-            observer.onNext(searchResult.results)
+            let musics = try JSONDecoder().decode(Musics.self, from: data)
+            observer.onNext(musics.results)
           } catch {
             observer.onError(
               NSError(
