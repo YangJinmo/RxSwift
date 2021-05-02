@@ -10,13 +10,8 @@ import UIKit
 extension UIImageView {
   
   func setImage(urlString: String?, placeholder: UIImage? = nil) {
-    guard
-      let urlString: String = urlString,
-      let url: URL = urlString.toURL
-    else {
-      return
-    }
-    setImage(url: url, placeholder: placeholder)
+    guard let urlString: String = urlString else { return }
+    setImage(url: urlString.toURL, placeholder: placeholder)
   }
   
   func setImage(url: URL?, placeholder: UIImage? = nil) {
@@ -43,7 +38,7 @@ extension UIImageView {
     }
   }
   
-  func setImageSynchronously(resource: String, type: String = "jpg") {
+  func setImageSynchronously(resource: String?, type: String? = "jpg") {
     guard
       let filePath: String = Bundle.main.path(forResource: resource, ofType: type),
       let image: UIImage = UIImage(contentsOfFile: filePath)
@@ -53,23 +48,18 @@ extension UIImageView {
     self.image = image
   }
   
-  private func getData(with url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-    URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+  func downloadImage(urlString: String?, placeholder: UIImage? = nil) {
+    guard let urlString: String = urlString else { return }
+    downloadImage(url: urlString.toURL, placeholder: placeholder)
   }
   
-  func downloadImage(urlString: String, placeholder: UIImage? = nil) {
-    guard let url: URL = urlString.toURL else {
-      "fail: convert URL".log()
-      return
-    }
-    downloadImage(url: url, placeholder: placeholder)
-  }
-  
-  func downloadImage(url: URL, placeholder: UIImage? = nil) {
+  func downloadImage(url: URL?, placeholder: UIImage? = nil) {
     
     if image == nil {
       image = placeholder
     }
+    
+    guard let url: URL = url else { return }
     
     getData(with: url) { [weak self] data, response, error -> Void in
       
@@ -78,15 +68,15 @@ extension UIImageView {
       }
       
       guard
-        let response = response as? HTTPURLResponse, response.statusCode == 200,
-        let mimeType = response.mimeType, mimeType.hasPrefix("image"),
-        let data = data
+        let response: HTTPURLResponse = response as? HTTPURLResponse, response.statusCode == 200,
+        let mimeType: String = response.mimeType, mimeType.hasPrefix("image"),
+        let data: Data = data
       else {
         "error: response, data".log()
         return
       }
       
-      let filename = response.suggestedFilename ?? url.lastPathComponent
+      let filename: String = response.suggestedFilename ?? url.lastPathComponent
       filename.log()
       
       DispatchQueue.main.async { [weak self] in
@@ -94,5 +84,9 @@ extension UIImageView {
         //self?.setNeedsLayout()
       }
     }
+  }
+  
+  private func getData(with url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+    URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
   }
 }

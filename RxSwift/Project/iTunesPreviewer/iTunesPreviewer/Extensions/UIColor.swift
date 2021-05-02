@@ -9,7 +9,7 @@ import UIKit
 
 extension UIColor {
   
-  // MARK: - Variables
+  // MARK: - Static Variables
   
   static var tintColor: UIColor { return .systemRed }
   

@@ -9,7 +9,7 @@ import UIKit
 
 final class AppContainer {
   
-  // MARK: - Constants
+  // MARK: - Static Constants
   
   static let instance: AppContainer = AppContainer()
   
