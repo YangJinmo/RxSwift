@@ -34,6 +34,7 @@ extension UIImageView {
           return
         }
         self?.image = UIImage(data: data)
+        //self?.setNeedsLayout()
       }
     }
   }
