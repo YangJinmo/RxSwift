@@ -9,6 +9,8 @@ import Foundation
 
 extension NSObject {
   
+  // MARK: - Variables
+  
   // Creates a string representing the given value.
   static var description: String {
     return String(describing: self)
