@@ -90,4 +90,43 @@ extension UIImageView {
   private func getData(with url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
     URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
   }
+  
+  func setImageUrlString(_ urlString: String) {
+    
+    let cacheKey = NSString(string: urlString) // 캐시에 사용될 Key 값
+    
+    if let cachedImage = ImageCacheManager.shared.object(forKey: cacheKey) { // 해당 Key 에 캐시이미지가 저장되어 있으면 이미지를 사용
+      self.image = cachedImage
+      return
+    }
+    
+    DispatchQueue.global(qos: .background).async {
+      if let imageUrl = URL(string: urlString) {
+        URLSession.shared.dataTask(with: imageUrl) { (data, res, err) in
+          if let err = err {
+            err.localizedDescription.log()
+            DispatchQueue.main.async {
+              self.image = UIImage()
+            }
+            return
+          }
+          DispatchQueue.main.async {
+            if let data = data, let image = UIImage(data: data) {
+              ImageCacheManager.shared.setObject(image, forKey: cacheKey) // 다운로드된 이미지를 캐시에 저장
+              self.image = image
+            }
+          }
+        }.resume()
+      }
+    }
+  }
+}
+
+class ImageCacheManager {
+  
+  // MARK: - Static Constants
+  
+  static let shared = NSCache<NSString, UIImage>()
+  
+  private init() {}
 }
