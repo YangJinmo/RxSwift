@@ -91,7 +91,9 @@ extension UIImageView {
     URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
   }
   
-  func setImageUrlString(_ urlString: String) {
+  func setImageWithCache(_ urlString: String?) {
+    
+    guard let urlString: String = urlString else { return }
     
     let cacheKey = NSString(string: urlString) // 캐시에 사용될 Key 값
     
@@ -101,23 +103,32 @@ extension UIImageView {
     }
     
     DispatchQueue.global(qos: .background).async {
-      if let imageUrl = URL(string: urlString) {
-        URLSession.shared.dataTask(with: imageUrl) { (data, res, err) in
-          if let err = err {
-            err.localizedDescription.log()
-            DispatchQueue.main.async {
-              self.image = UIImage()
-            }
+      guard let imageUrl = URL(string: urlString) else { return }
+      URLSession.shared.dataTask(with: imageUrl) { [weak self] data, response, error -> Void in
+        if let error = error {
+          error.localizedDescription.log()
+          DispatchQueue.main.async {
+            self?.image = nil
+          }
+          return
+        }
+        guard
+          let response: HTTPURLResponse = response as? HTTPURLResponse, response.statusCode == 200,
+          let mimeType: String = response.mimeType, mimeType.hasPrefix("image"),
+          let data: Data = data
+        else {
+          "error: response, data".log()
+          return
+        }
+        DispatchQueue.main.async {
+          guard let image = UIImage(data: data) else {
+            self?.image = nil
             return
           }
-          DispatchQueue.main.async {
-            if let data = data, let image = UIImage(data: data) {
-              ImageCacheManager.shared.setObject(image, forKey: cacheKey) // 다운로드된 이미지를 캐시에 저장
-              self.image = image
-            }
-          }
-        }.resume()
-      }
+          ImageCacheManager.shared.setObject(image, forKey: cacheKey) // 다운로드된 이미지를 캐시에 저장
+          self?.image = image
+        }
+      }.resume()
     }
   }
 }
