@@ -99,45 +99,54 @@ extension UIImageView {
     
     if let cachedImage = ImageCacheManager.shared.object(forKey: cacheKey) { // 해당 Key 에 캐시이미지가 저장되어 있으면 이미지를 사용
       self.image = cachedImage
-      return
-    }
-    
-    DispatchQueue.global(qos: .background).async {
-      guard let imageUrl = URL(string: urlString) else { return }
-      URLSession.shared.dataTask(with: imageUrl) { [weak self] data, response, error -> Void in
-        if let error = error {
-          error.localizedDescription.log()
-          DispatchQueue.main.async {
-            self?.image = nil
-          }
-          return
-        }
-        guard
-          let response: HTTPURLResponse = response as? HTTPURLResponse, response.statusCode == 200,
-          let mimeType: String = response.mimeType, mimeType.hasPrefix("image"),
-          let data: Data = data
-        else {
-          "error: response, data".log()
-          return
-        }
-        DispatchQueue.main.async {
-          guard let image = UIImage(data: data) else {
-            self?.image = nil
+    } else if let url = URL(string: urlString) {
+      
+      DispatchQueue.global(qos: .background).async {
+        self.getData(with: url) { [weak self] data, response, error -> Void in
+          if let error = error {
+            error.localizedDescription.log()
+            DispatchQueue.main.async {
+              self?.image = nil
+            }
             return
           }
-          ImageCacheManager.shared.setObject(image, forKey: cacheKey) // 다운로드된 이미지를 캐시에 저장
-          self?.image = image
+          
+          guard
+            let response: HTTPURLResponse = response as? HTTPURLResponse, response.statusCode == 200,
+            let mimeType: String = response.mimeType, mimeType.hasPrefix("image"),
+            let data: Data = data
+          else {
+            "error: response, data".log()
+            DispatchQueue.main.async {
+              self?.image = nil
+            }
+            return
+          }
+          
+          let filename: String = response.suggestedFilename ?? url.lastPathComponent
+          filename.log()
+          
+          DispatchQueue.main.async {
+            guard let image = UIImage(data: data) else {
+              self?.image = nil
+              return
+            }
+            ImageCacheManager.shared.setObject(image, forKey: cacheKey) // 다운로드된 이미지를 캐시에 저장
+            self?.image = image
+          }
         }
-      }.resume()
+      }
     }
   }
 }
 
-class ImageCacheManager {
+final class ImageCacheManager {
   
   // MARK: - Static Constants
   
   static let shared = NSCache<NSString, UIImage>()
+  
+  // MARK: - Initialization
   
   private init() {}
 }
