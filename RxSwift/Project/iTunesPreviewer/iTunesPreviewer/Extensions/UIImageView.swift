@@ -91,6 +91,8 @@ extension UIImageView {
     URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
   }
   
+  // MARK: - Cache
+  
   func setImageWithCache(_ urlString: String?) {
     
     guard let urlString: String = urlString else { return }
