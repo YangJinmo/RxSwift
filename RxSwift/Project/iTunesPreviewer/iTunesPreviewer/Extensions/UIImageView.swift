@@ -34,7 +34,6 @@ extension UIImageView {
           return
         }
         self?.image = UIImage(data: data)
-        //self?.setNeedsLayout()
       }
     }
   }
@@ -82,7 +81,6 @@ extension UIImageView {
       
       DispatchQueue.main.async { [weak self] in
         self?.image = UIImage(data: data)
-        //self?.setNeedsLayout()
       }
     }
   }
