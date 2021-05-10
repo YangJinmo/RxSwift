@@ -12,8 +12,8 @@ extension UIImageView {
   // MARK: - Data
   
   func setImage(urlString: String?, placeholder: UIImage? = nil) {
-    guard let urlString: String = urlString else { return }
-    setImage(url: urlString.toURL, placeholder: placeholder)
+    let url: URL? = urlString.flatMap { URL(string: $0) }
+    setImage(url: url, placeholder: placeholder)
   }
   
   func setImage(url: URL?, placeholder: UIImage? = nil) {
@@ -55,8 +55,8 @@ extension UIImageView {
   // MARK: - Download
   
   func downloadImage(urlString: String?, placeholder: UIImage? = nil) {
-    guard let urlString: String = urlString else { return }
-    downloadImage(url: urlString.toURL, placeholder: placeholder)
+    let url: URL? = urlString.flatMap { URL(string: $0) }
+    downloadImage(url: url, placeholder: placeholder)
   }
   
   func downloadImage(url: URL?, placeholder: UIImage? = nil) {

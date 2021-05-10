@@ -9,12 +9,6 @@ import Foundation
 
 extension String {
   
-  // MARK: - Variables
-  
-  var toURL: URL? {
-    return URL(string: self)
-  }
-  
   // MARK: - Methods
   
   func log(function: String = #function, _ comment: String = "") {
