@@ -9,6 +9,8 @@ import UIKit
 
 extension UIImageView {
   
+  // MARK: - Data
+  
   func setImage(urlString: String?, placeholder: UIImage? = nil) {
     guard let urlString: String = urlString else { return }
     setImage(url: urlString.toURL, placeholder: placeholder)
@@ -38,6 +40,8 @@ extension UIImageView {
     }
   }
   
+  // MARK: - Synchronously
+  
   func setImageSynchronously(resource: String?, type: String? = "jpg") {
     guard
       let filePath: String = Bundle.main.path(forResource: resource, ofType: type),
@@ -47,6 +51,8 @@ extension UIImageView {
     }
     self.image = image
   }
+  
+  // MARK: - Download
   
   func downloadImage(urlString: String?, placeholder: UIImage? = nil) {
     guard let urlString: String = urlString else { return }
