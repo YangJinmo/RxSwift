@@ -132,7 +132,7 @@ final class PlayerViewController: UIViewController {
     titleLabel.text = music.trackName
     artistLabel.text = music.artistName
     
-    guard let previewUrl = music.previewUrl.toURL else { return }
+    guard let previewUrl: URL = music.previewUrl.toURL else { return }
     let avPlayerItem = AVPlayerItem(url: previewUrl)
     avPlayer.replaceCurrentItem(with: avPlayerItem)
     avPlayer.play()
