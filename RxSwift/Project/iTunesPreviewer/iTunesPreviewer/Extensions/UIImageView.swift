@@ -9,8 +9,6 @@ import UIKit
 
 extension UIImageView {
   
-  // MARK: - Data
-  
   func setImage(urlString: String?, placeholder: UIImage? = nil) {
     let url: URL? = urlString.flatMap { $0.toURL }
     setImage(url: url, placeholder: placeholder)
@@ -54,12 +52,12 @@ extension UIImageView {
   
   // MARK: - Download
   
-  func downloadImage(urlString: String?, placeholder: UIImage? = nil) {
+  func setImageDownload(urlString: String?, placeholder: UIImage? = nil) {
     let url: URL? = urlString.flatMap { $0.toURL }
-    downloadImage(url: url, placeholder: placeholder)
+    setImageDownload(url: url, placeholder: placeholder)
   }
   
-  func downloadImage(url: URL?, placeholder: UIImage? = nil) {
+  func setImageDownload(url: URL?, placeholder: UIImage? = nil) {
     
     if image == nil {
       image = placeholder
@@ -95,9 +93,9 @@ extension UIImageView {
     URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
   }
   
-  // MARK: - Memory Cache
+  // MARK: - Retrieve Memory Cache
   
-  func setImageWithMemoryCache(urlString: String?) {
+  func setImageRetrieveInMemoryCache(urlString: String?) {
     
     guard let urlString: String = urlString else { return }
     
@@ -107,7 +105,7 @@ extension UIImageView {
       self.image = cachedImage
     } else if let url: URL = urlString.toURL {
       DispatchQueue.global(qos: .background).async {
-        self.getData(with: url) { [weak self] data, response, error -> Void in
+        self.getData(with: url) { [weak self] data, response, error in
           if let error = error {
             error.localizedDescription.log()
             DispatchQueue.main.async {
@@ -144,9 +142,9 @@ extension UIImageView {
     }
   }
   
-  // MARK: - Disk Cache
+  // MARK: - Retrieve Disk Cache
   
-  func setImageWithDiskCache(urlString: String?) {
+  func setImageRetrieveInDiskCache(urlString: String?) {
     
     guard let urlString: String = urlString else { return }
     
@@ -161,16 +159,16 @@ extension UIImageView {
     
     // 해당 디렉토리 이름 지정.
     // /Library/Caches/DiskCache <- 경로를 저장
-    let dataPathUrl: URL = urls.first!.appendingPathComponent("DiskCache") //name + ".cache")
+    let dataPathUrl: URL = urls.first!.appendingPathComponent("DiskCache") //(name + ".cache")
     let dataPath: String = dataPathUrl.path
     
     if !fileManager.fileExists(atPath: dataPath) {
       do {
-        print("경로를 생성합니다")
+        "경로를 생성합니다".log()
         // 디렉토리 생성
         try fileManager.createDirectory(atPath: dataPath, withIntermediateDirectories: false, attributes: nil)
       } catch {
-        print("Error creating directory: \(error.localizedDescription)")
+        "Error creating directory: \(error.localizedDescription)".log()
       }
     }
     
@@ -178,7 +176,7 @@ extension UIImageView {
     let strPath: String = strPathUrl.path
     
     if fileManager.fileExists(atPath: strPath) {
-      print("디스크 캐시에 이미지가 존재합니다")
+      "디스크 캐시에 이미지가 존재합니다".log()
       do {
         let data = try Data(contentsOf: strPathUrl)
         let image = UIImage(data: data)
@@ -186,9 +184,10 @@ extension UIImageView {
           self?.image = image
         }
       } catch {
-        print("Error : \(error.localizedDescription)")
+        "Error : \(error.localizedDescription)".log()
       }
     } else if let url: URL = urlString.toURL {
+      
       // "Image Download" 버튼을 누르면 URLSession을 이용하여 data를 받아오고 각 ImageView에 넣는 작업
       getData(with: url) { [weak self] data, response, error in
         
@@ -274,8 +273,8 @@ final class DiskCache<T: Codable>: AnyDiskCache {
   }
   
   func retrieve(name: String) throws -> T?  {
-    let urls = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
-    let url = urls[0].appendingPathComponent(name + ".cache")
+    let urls: [URL] = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
+    let url: URL = urls[0].appendingPathComponent(name + ".cache")
     guard let data = try? Data(contentsOf: url) else { return nil }
     return try JSONDecoder().decode(T.self, from: data)
   }
