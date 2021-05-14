@@ -178,8 +178,8 @@ extension UIImageView {
     if fileManager.fileExists(atPath: strPath) {
       "디스크 캐시에 이미지가 존재합니다".log()
       do {
-        let data = try Data(contentsOf: strPathUrl)
-        let image = UIImage(data: data)
+        let data: Data = try Data(contentsOf: strPathUrl)
+        let image: UIImage? = UIImage(data: data)
         DispatchQueue.main.async { [weak self] in
           self?.image = image
         }
@@ -198,7 +198,8 @@ extension UIImageView {
         guard
           let response: HTTPURLResponse = response as? HTTPURLResponse, response.statusCode == 200,
           let mimeType: String = response.mimeType, mimeType.hasPrefix("image"),
-          let data: Data = data
+          let data: Data = data,
+          let image: UIImage = UIImage(data: data)
         else {
           "error: response, data".log()
           return
@@ -206,8 +207,6 @@ extension UIImageView {
         
         let filename: String = response.suggestedFilename ?? url.lastPathComponent
         filename.log()
-        
-        guard let image: UIImage = UIImage(data: data) else { return }
         
         /**
          디스크 캐시는 iOS의 파일 시스템을 사용하여 객체에서 변환 된 데이터를 저장.
