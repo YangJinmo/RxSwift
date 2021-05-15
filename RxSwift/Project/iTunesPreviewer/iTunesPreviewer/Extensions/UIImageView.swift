@@ -201,7 +201,7 @@ extension UIImageView {
           let data: Data = data,
           let image: UIImage = UIImage(data: data)
         else {
-          "error: response, data".log()
+          "error: response, data, image".log()
           return
         }
         
