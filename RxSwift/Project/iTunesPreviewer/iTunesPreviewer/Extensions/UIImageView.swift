@@ -97,7 +97,7 @@ extension UIImageView {
   
   func setImageRetrieveInMemoryCache(urlString: String?) {
     
-    guard let urlString: String = urlString else { return }
+    guard let urlString: String = urlString, !urlString.isEmpty else { return }
     
     let cacheKey: NSString = NSString(string: urlString) // 캐시에 사용될 Key 값
     
@@ -146,37 +146,47 @@ extension UIImageView {
   
   func setImageRetrieveInDiskCache(urlString: String?) {
     
-    guard let urlString: String = urlString else { return }
+    guard let urlString: String = urlString, !urlString.isEmpty else { return }
     
-    // FileManager 인스턴스 생성. default는 FileManager 싱글톤 인스턴스를 만들어줌
-    // FileManager는 URL 혹은 String 데이터 타입을 통해 파일에 접근할 수 있도록 합니다
-    // Apple에서는 URL을 통한 파일 접근을 권장함
+    /**
+     FileManager를 이용해 파일/폴더 생성
+     FileManager 인스턴스 생성. default는 FileManager 싱글톤 인스턴스를 만들어줍니다.
+     FileManager는 URL 혹은 String 데이터 타입을 통해 파일에 접근할 수 있도록 합니다.
+     Apple에서는 URL을 통한 파일 접근을 권장합니다.
+     */
     let fileManager: FileManager = FileManager.default
     
-    // cache 디렉토리의 경로 저장
-    // urls(for:in:): 메소드를 통해 특정 경로에 접근
-    let urls: [URL] = fileManager.urls(for: .cachesDirectory, in: .userDomainMask)
+    /**
+     cachesDirectory의 경로 저장
+     urls(for:in:): 메소드를 통해 특정 경로에 접근
+     */
+    let urls: [URL] = fileManager.urls(
+      for: .cachesDirectory,
+      in: .userDomainMask // user's home directory --- place to install user's personal items (~)
+    )
     
-    // 해당 디렉토리 이름 지정.
-    // /Library/Caches/DiskCache <- 경로를 저장
-    let dataPathUrl: URL = urls.first!.appendingPathComponent("DiskCache") //(name + ".cache")
-    let dataPath: String = dataPathUrl.path
+    guard let documentsDirectory: URL = urls.first else { return }
     
-    if !fileManager.fileExists(atPath: dataPath) {
+    let fileName: String = "DiskCache"
+    let fileURL: URL = documentsDirectory.appendingPathComponent(fileName)
+    let filePath: String = fileURL.path // /Library/Caches/DiskCache
+    
+    if !fileManager.fileExists(atPath: filePath) {
       do {
         "경로를 생성합니다".log()
         // 디렉토리 생성
-        try fileManager.createDirectory(atPath: dataPath, withIntermediateDirectories: false, attributes: nil)
+        try fileManager.createDirectory(atPath: filePath, withIntermediateDirectories: false, attributes: nil)
       } catch {
         "Error creating directory: \(error.localizedDescription)".log()
       }
     }
     
-    let strPathUrl: URL = dataPathUrl.appendingPathComponent("project_lunch.png")
+    let imageName: String = "project_lunch.png"
+    let strPathUrl: URL = fileURL.appendingPathComponent(imageName)
     let strPath: String = strPathUrl.path
     
     if fileManager.fileExists(atPath: strPath) {
-      "디스크 캐시에 이미지가 존재합니다".log()
+      "디스크 캐시에 이미지가 이미 존재합니다".log()
       do {
         let data: Data = try Data(contentsOf: strPathUrl)
         let image: UIImage? = UIImage(data: data)
