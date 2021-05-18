@@ -85,7 +85,7 @@ final class MusicCell: BaseCollectionViewCell {
   // MARK: - Internal Methods
   
   func bind(music: Music) {
-    albumImageView.setImage(urlString: music.artworkUrl100)
+    albumImageView.setImage(url: music.artworkUrl100)
     
     titleLabel.text = music.trackName
     artistLabel.text = music.artistName

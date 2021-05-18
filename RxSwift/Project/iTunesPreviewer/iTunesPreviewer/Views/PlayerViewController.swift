@@ -127,13 +127,13 @@ final class PlayerViewController: UIViewController {
   }
   
   private func bind(music: Music) {
-    albumImageView.setImage(urlString: music.artworkUrl100)
+    albumImageView.setImage(url: music.artworkUrl100)
 
     titleLabel.text = music.trackName
     artistLabel.text = music.artistName
     
-    guard let previewUrl: URL = music.previewUrl.toURL else { return }
-    let avPlayerItem = AVPlayerItem(url: previewUrl)
+    guard let previewUrl: URL = music.previewUrl else { return }
+    let avPlayerItem: AVPlayerItem = AVPlayerItem(url: previewUrl)
     avPlayer.replaceCurrentItem(with: avPlayerItem)
     avPlayer.play()
   }

@@ -9,31 +9,25 @@ import UIKit
 
 extension UIImageView {
   
-  func setImage(urlString: String?, placeholder: UIImage? = nil) {
+  func setImage(urlString: String?) {
     let url: URL? = urlString.flatMap { $0.toURL }
-    setImage(url: url, placeholder: placeholder)
+    setImage(url: url)
   }
   
-  func setImage(url: URL?, placeholder: UIImage? = nil) {
-    
-    if self.image == nil {
-      self.image = placeholder
-    }
-    
+  func setImage(url: URL?) {
     guard let url: URL = url else { return }
     
     // 싱글 쓰레드로 동작하기 때문에 이미지를 다운로드 받기까지 잠깐의 멈춤이 발생할 수 있다.
     // DispatchQueue를 사용하면 멀티 쓰레드로 동작하여 멈춤이 생기지 않는다.
     DispatchQueue.global().async { [weak self] in
-      
-      let data: Data? = try? Data(contentsOf: url)
-      
-      DispatchQueue.main.async { [weak self] in
-        guard let data = data else {
-          self?.image = placeholder
-          return
+      do {
+        let data: Data = try Data(contentsOf: url)
+        
+        DispatchQueue.main.async {
+          self?.image = UIImage(data: data)
         }
-        self?.image = UIImage(data: data)
+      } catch {
+        "Error: \(error.localizedDescription)".log()
       }
     }
   }
@@ -52,39 +46,31 @@ extension UIImageView {
   
   // MARK: - Download
   
-  func setImageDownload(urlString: String?, placeholder: UIImage? = nil) {
-    let url: URL? = urlString.flatMap { $0.toURL }
-    setImageDownload(url: url, placeholder: placeholder)
-  }
-  
-  func setImageDownload(url: URL?, placeholder: UIImage? = nil) {
-    
-    if image == nil {
-      image = placeholder
-    }
-    
+  func setImageDownload(url: URL?) {
     guard let url: URL = url else { return }
     
-    getData(with: url) { [weak self] data, response, error -> Void in
+    getData(with: url) { [weak self] data, response, error in
       
       if let error = error {
         error.localizedDescription.log()
-      }
-      
-      guard
-        let response: HTTPURLResponse = response as? HTTPURLResponse, response.statusCode == 200,
-        let mimeType: String = response.mimeType, mimeType.hasPrefix("image"),
-        let data: Data = data
-      else {
-        "error: response, data".log()
         return
       }
       
-      let filename: String = response.suggestedFilename ?? url.lastPathComponent
+      guard
+        let httpResponse: HTTPURLResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode),
+        let mimeType: String = httpResponse.mimeType, mimeType.hasPrefix("image"),
+        let data: Data = data,
+        let image: UIImage = UIImage(data: data)
+      else {
+        "Error: response, data, image".log()
+        return
+      }
+      
+      let filename: String = httpResponse.suggestedFilename ?? url.lastPathComponent
       filename.log()
       
-      DispatchQueue.main.async { [weak self] in
-        self?.image = UIImage(data: data)
+      DispatchQueue.main.async {
+        self?.image = image
       }
     }
   }
@@ -95,48 +81,37 @@ extension UIImageView {
   
   // MARK: - Retrieve Memory Cache
   
-  func setImageRetrieveInMemoryCache(urlString: String?) {
+  func setImageRetrieveInMemoryCache(url: URL?) {
+    guard let url: URL = url else { return }
     
-    guard let urlString: String = urlString, !urlString.isEmpty else { return }
-    
-    let cacheKey: NSString = NSString(string: urlString) // 캐시에 사용될 Key 값
+    let cacheKey: NSString = NSString(string: url.absoluteString) // 캐시에 사용될 Key 값
     
     if let cachedImage: UIImage = ImageCacheManager.shared.object(forKey: cacheKey) { // 해당 Key에 캐시이미지가 저장되어 있으면 이미지를 사용
-      self.image = cachedImage
-    } else if let url: URL = urlString.toURL {
-      DispatchQueue.global(qos: .background).async {
-        self.getData(with: url) { [weak self] data, response, error in
-          if let error = error {
-            error.localizedDescription.log()
-            DispatchQueue.main.async {
-              self?.image = nil
-            }
-            return
-          }
-          
-          guard
-            let response: HTTPURLResponse = response as? HTTPURLResponse, response.statusCode == 200,
-            let mimeType: String = response.mimeType, mimeType.hasPrefix("image"),
-            let data: Data = data
-          else {
-            "error: response, data".log()
-            DispatchQueue.main.async {
-              self?.image = nil
-            }
-            return
-          }
-          
-          let filename: String = response.suggestedFilename ?? url.lastPathComponent
-          filename.log()
-          
-          DispatchQueue.main.async {
-            guard let image = UIImage(data: data) else {
-              self?.image = nil
-              return
-            }
-            ImageCacheManager.shared.setObject(image, forKey: cacheKey) // 다운로드된 이미지를 캐시에 저장
-            self?.image = image
-          }
+      image = cachedImage
+    } else {
+      getData(with: url) { [weak self] data, response, error in
+        
+        if let error = error {
+          error.localizedDescription.log()
+          return
+        }
+        
+        guard
+          let httpResponse: HTTPURLResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode),
+          let mimeType: String = httpResponse.mimeType, mimeType.hasPrefix("image"),
+          let data: Data = data,
+          let image: UIImage = UIImage(data: data)
+        else {
+          "Error: response, data, image".log()
+          return
+        }
+        
+        let filename: String = httpResponse.suggestedFilename ?? url.lastPathComponent
+        filename.log()
+        
+        DispatchQueue.main.async {
+          ImageCacheManager.shared.setObject(image, forKey: cacheKey) // 다운로드된 이미지를 캐시에 저장
+          self?.image = image
         }
       }
     }
@@ -144,22 +119,17 @@ extension UIImageView {
   
   // MARK: - Retrieve Disk Cache
   
-  func setImageRetrieveInDiskCache(urlString: String?) {
-    
-    guard let urlString: String = urlString, !urlString.isEmpty else { return }
+  func setImageRetrieveInDiskCache(url: URL?) {
+    guard let url: URL = url else { return }
     
     /**
-     FileManager를 이용해 파일/폴더 생성
      FileManager 인스턴스 생성. default는 FileManager 싱글톤 인스턴스를 만들어줍니다.
      FileManager는 URL 혹은 String 데이터 타입을 통해 파일에 접근할 수 있도록 합니다.
      Apple에서는 URL을 통한 파일 접근을 권장합니다.
      */
     let fileManager: FileManager = FileManager.default
     
-    /**
-     cachesDirectory의 경로 저장
-     urls(for:in:): 메소드를 통해 특정 경로에 접근
-     */
+    // 폴더 생성
     let urls: [URL] = fileManager.urls(
       for: .cachesDirectory,
       in: .userDomainMask // user's home directory --- place to install user's personal items (~)
@@ -167,75 +137,56 @@ extension UIImageView {
     
     guard let documentsDirectory: URL = urls.first else { return }
     
-    let fileName: String = "DiskCache"
-    let fileURL: URL = documentsDirectory.appendingPathComponent(fileName)
-    let filePath: String = fileURL.path // /Library/Caches/DiskCache
+    let directoryName: String = "DiskCache"
+    let directoryURL: URL = documentsDirectory.appendingPathComponent(directoryName)
+    let directoryPath: String = directoryURL.path // .../Library/Caches/DiskCache
     
-    if !fileManager.fileExists(atPath: filePath) {
+    if !fileManager.fileExists(atPath: directoryPath) {
+      "\(directoryName)가 존재하지 않습니다.".log()
       do {
-        "경로를 생성합니다".log()
-        // 디렉토리 생성
-        try fileManager.createDirectory(atPath: filePath, withIntermediateDirectories: false, attributes: nil)
+        try fileManager.createDirectory(atPath: directoryPath, withIntermediateDirectories: false, attributes: nil)
+        "Create Directory: \(directoryName)".log()
       } catch {
-        "Error creating directory: \(error.localizedDescription)".log()
+        "Create Directory Error: \(error.localizedDescription)".log()
       }
     }
     
-    let imageName: String = "project_lunch.png"
-    let strPathUrl: URL = fileURL.appendingPathComponent(imageName)
-    let strPath: String = strPathUrl.path
+    // 파일 생성
+    let fileName: String = "project_lunch.png"
+    let fileURL: URL = directoryURL.appendingPathComponent(fileName)
+    let filePath: String = fileURL.path
     
-    if fileManager.fileExists(atPath: strPath) {
-      "디스크 캐시에 이미지가 이미 존재합니다".log()
-      do {
-        let data: Data = try Data(contentsOf: strPathUrl)
-        let image: UIImage? = UIImage(data: data)
-        DispatchQueue.main.async { [weak self] in
-          self?.image = image
-        }
-      } catch {
-        "Error : \(error.localizedDescription)".log()
-      }
-    } else if let url: URL = urlString.toURL {
-      
-      // "Image Download" 버튼을 누르면 URLSession을 이용하여 data를 받아오고 각 ImageView에 넣는 작업
+    if fileManager.fileExists(atPath: filePath) {
+      "\(fileName)이 존재합니다.".log()
+      setImage(url: fileURL)
+    } else {
       getData(with: url) { [weak self] data, response, error in
         
         if let error = error {
           error.localizedDescription.log()
-        }
-        
-        guard
-          let response: HTTPURLResponse = response as? HTTPURLResponse, response.statusCode == 200,
-          let mimeType: String = response.mimeType, mimeType.hasPrefix("image"),
-          let data: Data = data,
-          let image: UIImage = UIImage(data: data)
-        else {
-          "error: response, data, image".log()
           return
         }
         
-        let filename: String = response.suggestedFilename ?? url.lastPathComponent
+        guard
+          let httpResponse: HTTPURLResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode),
+          let mimeType: String = httpResponse.mimeType, mimeType.hasPrefix("image"),
+          let data: Data = data,
+          let image: UIImage = UIImage(data: data)
+        else {
+          "Error: response, data, image".log()
+          return
+        }
+        
+        let filename: String = httpResponse.suggestedFilename ?? url.lastPathComponent
         filename.log()
         
-        /**
-         디스크 캐시는 iOS의 파일 시스템을 사용하여 객체에서 변환 된 데이터를 저장.
-         일반적으로 앱의 캐시 디렉토리에 자체 디렉토리를 만듭니다.
-         모든 객체에 대해 파일이 생성됩니다.
-         */
-        
-        DispatchQueue.main.async { [weak self] in
+        DispatchQueue.main.async {
           self?.image = image
         }
         
-        let pngData: Data? = image.pngData()
+        guard let pngData: Data = image.pngData() else { return }
         
-        // store it in the document directory
-        fileManager.createFile(
-          atPath: strPath,
-          contents: pngData,
-          attributes: nil
-        )
+        fileManager.createFile(atPath: filePath, contents: pngData, attributes: nil)
       }
     }
   }
@@ -250,41 +201,4 @@ final class ImageCacheManager {
   // MARK: - Initialization
   
   private init() {}
-}
-
-class AnyDiskCache {
-  
-  // MARK: - Static Methods
-  
-  static func invalidate(name: String) throws {
-    let fileManager: FileManager = FileManager.default
-    let urls: [URL] = fileManager.urls(for: .cachesDirectory, in: .userDomainMask)
-    let url: URL = urls[0].appendingPathComponent(name + ".cache")
-    try fileManager.removeItem(at: url)
-  }
-}
-
-final class DiskCache<T: Codable>: AnyDiskCache {
-  
-  // MARK: - Methods
-  
-  func save(object: T, name: String) throws {
-    // Preventing caching empty arrays
-    if let collection = object as? Array<T>, collection.isEmpty {
-      return
-    }
-    
-    let urls: [URL] = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
-    let url: URL = urls[0].appendingPathComponent(name + ".cache")
-    
-    guard let data = try? JSONEncoder().encode(object) else { return }
-    try data.write(to: url)
-  }
-  
-  func retrieve(name: String) throws -> T?  {
-    let urls: [URL] = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
-    let url: URL = urls[0].appendingPathComponent(name + ".cache")
-    guard let data = try? Data(contentsOf: url) else { return nil }
-    return try JSONDecoder().decode(T.self, from: data)
-  }
 }
