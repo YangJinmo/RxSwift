@@ -9,6 +9,8 @@ import UIKit
 
 extension UIImageView {
   
+  // MARK: - Methods
+  
   func setImage(urlString: String?) {
     let url: URL? = urlString.flatMap { $0.toURL }
     setImage(url: url)
