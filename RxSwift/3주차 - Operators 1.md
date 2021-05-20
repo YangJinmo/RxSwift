@@ -17,6 +17,6 @@
 
 ------
 
-[Creating Observables](https://www.notion.so/Creating-Observables-1e234f43892448c196aff3eeb27dae4d)
+[Creating Observables](https://www.notion.so/Creating-Observables-846a56f6c3be4626b77880cece8f945b)
 
-[Transforming Observables](https://www.notion.so/Transforming-Observables-a3fb98c6d6914c6c8437fb01ca1e836a)
+[Transforming Observables](https://www.notion.so/Transforming-Observables-6b3ccac17d8643fe82d1b71051fb0773)

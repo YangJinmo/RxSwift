@@ -29,6 +29,6 @@
 
 ------
 
-[Filtering Observables](https://www.notion.so/Filtering-Observables-cd5a13b68a97425a9a741a32dab564fa)
+[Filtering Observables](https://www.notion.so/Filtering-Observables-a0f125106ad44a369ab4e40376983f16)
 
-[**Combining Observables**](https://www.notion.so/Combining-Observables-934ab3b525fd4534a8144b69f3ff0409)
+[Combining Observables](https://www.notion.so/Combining-Observables-878bfe7c068345afa646cce89937b829)

@@ -21,6 +21,6 @@
 
 ------
 
-[Observable](https://www.notion.so/Observable-a84aae4818cf47f6ab657586901ef467)
+[Observable](https://www.notion.so/Observable-f037dd72fa694a048f410d811eb1f96d)
 
-[Subject](https://www.notion.so/Subject-4497a5cd7ac04277ab79d5f619e699da)
+[Subject](https://www.notion.so/Subject-c97e3e27abe14bf2a5fed0e001c1cff5)
