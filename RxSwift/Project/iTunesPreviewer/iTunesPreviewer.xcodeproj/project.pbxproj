@@ -133,6 +133,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09325A1C2661270500D0AA42 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				094525F026386A1A00D2995A /* Application */,
+				09452613263870C200D2995A /* Bases */,
+				094525F726386B9000D2995A /* Networking */,
+				094525E92638696200D2995A /* Models */,
+				094525E82638695B00D2995A /* ViewModels */,
+				094525E72638695500D2995A /* Views */,
+				094525EA2638699C00D2995A /* Extensions */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		0945258F263837E700D2995A = {
 			isa = PBXGroup;
 			children = (
@@ -158,14 +172,7 @@
 		0945259A263837E700D2995A /* iTunesPreviewer */ = {
 			isa = PBXGroup;
 			children = (
-				094525F026386A1A00D2995A /* Application */,
-				09452613263870C200D2995A /* Bases */,
-				094525F726386B9000D2995A /* Networking */,
-				094525E92638696200D2995A /* Models */,
-				094525E82638695B00D2995A /* ViewModels */,
-				094525E72638695500D2995A /* Views */,
-				094525EA2638699C00D2995A /* Extensions */,
-				094525EC263869DE00D2995A /* Storyboards */,
+				09325A1C2661270500D0AA42 /* Sources */,
 				094525E02638687C00D2995A /* Resources */,
 				094525DF263867CD00D2995A /* Supporting Files */,
 			);
@@ -202,6 +209,7 @@
 		094525E02638687C00D2995A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				094525A9263837E800D2995A /* LaunchScreen.storyboard */,
 				094525A7263837E800D2995A /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -248,14 +256,6 @@
 				094526932638795400D2995A /* NSObject.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		094525EC263869DE00D2995A /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				094525A9263837E800D2995A /* LaunchScreen.storyboard */,
-			);
-			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		094525F026386A1A00D2995A /* Application */ = {
