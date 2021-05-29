@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090947DE266281DB0017B82B /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090947DD266281DB0017B82B /* UICollectionView.swift */; };
 		0945259C263837E700D2995A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945259B263837E700D2995A /* AppDelegate.swift */; };
 		0945259E263837E700D2995A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945259D263837E700D2995A /* SceneDelegate.swift */; };
 		094525A6263837E700D2995A /* iTunesPreviewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 094525A4263837E700D2995A /* iTunesPreviewer.xcdatamodeld */; };
@@ -29,7 +30,6 @@
 		09452685263878F500D2995A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09452684263878F500D2995A /* UIView.swift */; };
 		0945268A2638791600D2995A /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526892638791600D2995A /* UIImageView.swift */; };
 		0945268F2638793E00D2995A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945268E2638793E00D2995A /* String.swift */; };
-		094526942638795400D2995A /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526932638795400D2995A /* NSObject.swift */; };
 		094526AF26391AC300D2995A /* Musics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526AE26391AC300D2995A /* Musics.swift */; };
 		094526B726391CEF00D2995A /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526B626391CEF00D2995A /* PlayerViewController.swift */; };
 		094526CF2639400900D2995A /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526CE2639400900D2995A /* UIStackView.swift */; };
@@ -59,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		090947DD266281DB0017B82B /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		09452598263837E700D2995A /* iTunesPreviewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesPreviewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0945259B263837E700D2995A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0945259D263837E700D2995A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,7 +88,6 @@
 		09452684263878F500D2995A /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		094526892638791600D2995A /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		0945268E2638793E00D2995A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		094526932638795400D2995A /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
 		094526AE26391AC300D2995A /* Musics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Musics.swift; sourceTree = "<group>"; };
 		094526B626391CEF00D2995A /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		094526CE2639400900D2995A /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
@@ -252,8 +252,8 @@
 				09452684263878F500D2995A /* UIView.swift */,
 				094526CE2639400900D2995A /* UIStackView.swift */,
 				094526892638791600D2995A /* UIImageView.swift */,
+				090947DD266281DB0017B82B /* UICollectionView.swift */,
 				0945268E2638793E00D2995A /* String.swift */,
-				094526932638795400D2995A /* NSObject.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -562,6 +562,7 @@
 				094526F4263970D100D2995A /* MusicControlButton.swift in Sources */,
 				094525A6263837E700D2995A /* iTunesPreviewer.xcdatamodeld in Sources */,
 				0945259C263837E700D2995A /* AppDelegate.swift in Sources */,
+				090947DE266281DB0017B82B /* UICollectionView.swift in Sources */,
 				094526692638778C00D2995A /* MusicsViewModel.swift in Sources */,
 				0945265A2638768E00D2995A /* BaseCollectionViewCell.swift in Sources */,
 				094526522638764800D2995A /* BaseViewModel.swift in Sources */,
@@ -579,7 +580,6 @@
 				09452685263878F500D2995A /* UIView.swift in Sources */,
 				094526CF2639400900D2995A /* UIStackView.swift in Sources */,
 				0945267B2638788100D2995A /* CGColor.swift in Sources */,
-				094526942638795400D2995A /* NSObject.swift in Sources */,
 				0945264D2638762F00D2995A /* BaseMVVMViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

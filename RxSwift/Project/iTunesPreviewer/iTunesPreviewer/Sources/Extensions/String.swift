@@ -2,7 +2,7 @@
 //  String.swift
 //  iTunesPreviewer
 //
-//  Created by YangJinMo on 2021/04/28.
+//  Created by Jmy on 2021/04/28.
 //
 
 import Foundation
@@ -11,7 +11,7 @@ extension String {
   
   // MARK: - Variables
   
-  var toURL: URL? {
+  var url: URL? {
     return URL(string: self)
   }
   

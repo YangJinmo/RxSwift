@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  iTunesPreviewer
 //
-//  Created by YangJinMo on 2021/04/27.
+//  Created by Jmy on 2021/04/27.
 //
 
 import UIKit

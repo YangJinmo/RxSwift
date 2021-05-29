@@ -2,7 +2,7 @@
 //  MusicsViewController.swift
 //  iTunesPreviewer
 //
-//  Created by YangJinMo on 2021/04/28.
+//  Created by Jmy on 2021/04/28.
 //
 
 import AVFoundation
@@ -47,7 +47,7 @@ final class MusicsViewController: BaseMVVMViewController<MusicsViewModel> {
     $0.showsVerticalScrollIndicator = false
     $0.backgroundColor = .systemBackground
     $0.alwaysBounceVertical = true
-    $0.register(MusicCell.self, forCellWithReuseIdentifier: MusicCell.description)
+    $0.register(MusicCell.self)
   }
   
   // MARK: - Internal Methods
@@ -108,7 +108,7 @@ final class MusicsViewController: BaseMVVMViewController<MusicsViewModel> {
     
     viewModel.musicsObservable
       .asDriver(onErrorJustReturn: [])
-      .drive(collectionView.rx.items(cellIdentifier: MusicCell.description)) { index, music, cell in
+      .drive(collectionView.rx.items(cellIdentifier: MusicCell.reuseIdentifier)) { index, music, cell in
         guard let cell = cell as? MusicCell else { return }
         cell.bind(music: music)
       }
