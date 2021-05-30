@@ -16,37 +16,17 @@ import RxRelay
 
 final class MusicsViewController: BaseMVVMViewController<MusicsViewModel> {
   
+  // MARK: - Constants
+  
+  private let cellHeight: CGFloat = 116
+  
   // MARK: - UI
   
   private let searchBar = UISearchBar().then {
     $0.placeholder = "Song name or artist"
   }
   
-  private let collectionViewLayout = UICollectionViewFlowLayout().then {
-    let numberOfItemForRow: CGFloat = 1
-    let lineSpacing: CGFloat = 0
-    let interItemSpacing: CGFloat = 0
-    let inset: CGFloat = 0
-    let viewWidth: CGFloat = UIScreen.width
-    let collectionWidth: CGFloat = viewWidth - (inset * 2)
-    let cellWidth: CGFloat = (collectionWidth - (interItemSpacing * (numberOfItemForRow - 1))) / numberOfItemForRow
-    let cellHeight: CGFloat = 116
-    
-    $0.itemSize = CGSize(width: cellWidth, height: cellHeight)
-    $0.sectionInset = .init(top: 0, left: inset, bottom: 0, right: inset)
-    $0.scrollDirection = .vertical
-    $0.minimumLineSpacing = lineSpacing
-    $0.minimumInteritemSpacing = interItemSpacing
-  }
-  
-  private lazy var collectionView = UICollectionView(
-    frame: .zero,
-    collectionViewLayout: collectionViewLayout
-  ).then {
-    $0.showsHorizontalScrollIndicator = false
-    $0.showsVerticalScrollIndicator = false
-    $0.backgroundColor = .systemBackground
-    $0.alwaysBounceVertical = true
+  private lazy var collectionView = BaseCollectionView(layout: flowLayout()).then {
     $0.register(MusicCell.self)
   }
   
@@ -56,7 +36,18 @@ final class MusicsViewController: BaseMVVMViewController<MusicsViewModel> {
     return .topAttached
   }
   
-  // MARK: - View Controller
+  // MARK: - UIViewController Transition Coordinator
+  
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    
+    guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+      return
+    }
+    flowLayout.invalidateLayout()
+  }
+  
+  // MARK: - View Life Cycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -120,9 +111,41 @@ final class MusicsViewController: BaseMVVMViewController<MusicsViewModel> {
         self.present(vc, animated: true, completion: nil)
       })
       .disposed(by: disposeBag)
+    
+    collectionView.rx.setDelegate(self)
+      .disposed(by: disposeBag)
   }
 }
 
 // MARK: - UISearchBarDelegate
 extension MusicsViewController: UISearchBarDelegate {
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension MusicsViewController: UICollectionViewDelegateFlowLayout {
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return itemSize(width: collectionView, height: cellHeight)
+  }
+}
+
+// MARK: - FlowLayoutMetric
+
+extension MusicsViewController: FlowLayoutMetric {
+  var numberOfItemForRow: CGFloat {
+    1
+  }
+  
+  var inset: CGFloat {
+    0
+  }
+  
+  var lineSpacing: CGFloat {
+    0
+  }
+  
+  var interItemSpacing: CGFloat {
+    0
+  }
 }

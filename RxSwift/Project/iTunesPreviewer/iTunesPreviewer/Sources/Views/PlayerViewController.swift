@@ -128,7 +128,7 @@ final class PlayerViewController: UIViewController {
   
   private func bind(music: Music) {
     albumImageView.setImage(url: music.artworkUrl100)
-
+    
     titleLabel.text = music.trackName
     artistLabel.text = music.artistName
     

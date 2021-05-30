@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		090947DE266281DB0017B82B /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090947DD266281DB0017B82B /* UICollectionView.swift */; };
+		090947E72663BF5D0017B82B /* FlowLayoutMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090947E62663BF5D0017B82B /* FlowLayoutMetric.swift */; };
+		090947EF2663BF8F0017B82B /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090947EE2663BF8F0017B82B /* BaseCollectionView.swift */; };
 		0945259C263837E700D2995A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945259B263837E700D2995A /* AppDelegate.swift */; };
 		0945259E263837E700D2995A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945259D263837E700D2995A /* SceneDelegate.swift */; };
 		094525A6263837E700D2995A /* iTunesPreviewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 094525A4263837E700D2995A /* iTunesPreviewer.xcdatamodeld */; };
@@ -26,7 +28,6 @@
 		0945266E263877B900D2995A /* MusicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945266D263877B900D2995A /* MusicsViewController.swift */; };
 		094526762638784300D2995A /* MusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526752638784300D2995A /* MusicCell.swift */; };
 		0945267B2638788100D2995A /* CGColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945267A2638788100D2995A /* CGColor.swift */; };
-		09452680263878CB00D2995A /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945267F263878CB00D2995A /* UIScreen.swift */; };
 		09452685263878F500D2995A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09452684263878F500D2995A /* UIView.swift */; };
 		0945268A2638791600D2995A /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526892638791600D2995A /* UIImageView.swift */; };
 		0945268F2638793E00D2995A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945268E2638793E00D2995A /* String.swift */; };
@@ -60,6 +61,8 @@
 
 /* Begin PBXFileReference section */
 		090947DD266281DB0017B82B /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		090947E62663BF5D0017B82B /* FlowLayoutMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayoutMetric.swift; sourceTree = "<group>"; };
+		090947EE2663BF8F0017B82B /* BaseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
 		09452598263837E700D2995A /* iTunesPreviewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesPreviewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0945259B263837E700D2995A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0945259D263837E700D2995A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,7 +87,6 @@
 		0945266D263877B900D2995A /* MusicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicsViewController.swift; sourceTree = "<group>"; };
 		094526752638784300D2995A /* MusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCell.swift; sourceTree = "<group>"; };
 		0945267A2638788100D2995A /* CGColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGColor.swift; sourceTree = "<group>"; };
-		0945267F263878CB00D2995A /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		09452684263878F500D2995A /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		094526892638791600D2995A /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		0945268E2638793E00D2995A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -133,11 +135,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		090947E52663BF4E0017B82B /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				090947E62663BF5D0017B82B /* FlowLayoutMetric.swift */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
 		09325A1C2661270500D0AA42 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				094525F026386A1A00D2995A /* Application */,
 				09452613263870C200D2995A /* Bases */,
+				090947E52663BF4E0017B82B /* Commons */,
 				094525F726386B9000D2995A /* Networking */,
 				094525E92638696200D2995A /* Models */,
 				094525E82638695B00D2995A /* ViewModels */,
@@ -248,7 +259,6 @@
 			children = (
 				09452633263874AC00D2995A /* UIColor.swift */,
 				0945267A2638788100D2995A /* CGColor.swift */,
-				0945267F263878CB00D2995A /* UIScreen.swift */,
 				09452684263878F500D2995A /* UIView.swift */,
 				094526CE2639400900D2995A /* UIStackView.swift */,
 				094526892638791600D2995A /* UIImageView.swift */,
@@ -290,8 +300,9 @@
 			children = (
 				0945264C2638762F00D2995A /* BaseMVVMViewController.swift */,
 				094526512638764800D2995A /* BaseViewModel.swift */,
-				094526592638768E00D2995A /* BaseCollectionViewCell.swift */,
 				094526D6263944E800D2995A /* BaseButton.swift */,
+				090947EE2663BF8F0017B82B /* BaseCollectionView.swift */,
+				094526592638768E00D2995A /* BaseCollectionViewCell.swift */,
 			);
 			path = Bases;
 			sourceTree = "<group>";
@@ -561,12 +572,12 @@
 				09452634263874AC00D2995A /* UIColor.swift in Sources */,
 				094526F4263970D100D2995A /* MusicControlButton.swift in Sources */,
 				094525A6263837E700D2995A /* iTunesPreviewer.xcdatamodeld in Sources */,
+				090947EF2663BF8F0017B82B /* BaseCollectionView.swift in Sources */,
 				0945259C263837E700D2995A /* AppDelegate.swift in Sources */,
 				090947DE266281DB0017B82B /* UICollectionView.swift in Sources */,
 				094526692638778C00D2995A /* MusicsViewModel.swift in Sources */,
 				0945265A2638768E00D2995A /* BaseCollectionViewCell.swift in Sources */,
 				094526522638764800D2995A /* BaseViewModel.swift in Sources */,
-				09452680263878CB00D2995A /* UIScreen.swift in Sources */,
 				094526B726391CEF00D2995A /* PlayerViewController.swift in Sources */,
 				094526D7263944E800D2995A /* BaseButton.swift in Sources */,
 				094526762638784300D2995A /* MusicCell.swift in Sources */,
@@ -575,6 +586,7 @@
 				0945268A2638791600D2995A /* UIImageView.swift in Sources */,
 				0945259E263837E700D2995A /* SceneDelegate.swift in Sources */,
 				0945270B263978A700D2995A /* Music.swift in Sources */,
+				090947E72663BF5D0017B82B /* FlowLayoutMetric.swift in Sources */,
 				0945265F2638774600D2995A /* QueryService.swift in Sources */,
 				09452642263875BC00D2995A /* AppContainer.swift in Sources */,
 				09452685263878F500D2995A /* UIView.swift in Sources */,

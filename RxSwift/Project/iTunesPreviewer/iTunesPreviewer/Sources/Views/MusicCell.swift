@@ -17,6 +17,7 @@ final class MusicCell: BaseCollectionViewCell {
   private let titleLabel = UILabel().then {
     $0.font = .systemFont(ofSize: 16, weight: .regular)
     $0.textColor = .label
+    $0.numberOfLines = 0
   }
   private let artistLabel = UILabel().then {
     $0.font = .systemFont(ofSize: 14, weight: .regular)
@@ -70,7 +71,7 @@ final class MusicCell: BaseCollectionViewCell {
     }
     dividerView.snp.makeConstraints {
       $0.height.equalTo(1)
-      $0.left.right.bottom.equalTo(0)
+      $0.left.right.bottom.equalToSuperview()
     }
   }
   
