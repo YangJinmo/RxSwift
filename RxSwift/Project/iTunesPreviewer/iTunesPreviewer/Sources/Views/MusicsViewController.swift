@@ -69,12 +69,12 @@ final class MusicsViewController: BaseMVVMViewController<MusicsViewModel> {
   
   private func configureConstraints() {
     searchBar.snp.makeConstraints {
-      $0.top.left.right.equalTo(view.safeAreaLayoutGuide)
+      $0.top.equalTo(view.safeAreaLayoutGuide)
+      $0.left.right.equalToSuperview()
     }
     collectionView.snp.makeConstraints {
       $0.top.equalTo(searchBar.snp.bottom)
-      $0.left.right.equalTo(view.safeAreaLayoutGuide)
-      $0.bottom.equalToSuperview()
+      $0.left.right.bottom.equalToSuperview()
     }
   }
   
