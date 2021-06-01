@@ -2,7 +2,7 @@
 //  SearchViewController.swift
 //  iTunesExplorer
 //
-//  Created by YangJinMo on 2021/04/21.
+//  Created by Jmy on 2021/04/21.
 //
 
 import AVFoundation
@@ -19,23 +19,19 @@ final class SearchViewController: BaseMVVMViewController<SearchViewModel> {
   // MARK: - Constants
   
   /// Get local file path: download task stores tune here; AV player plays it.
-  let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-  let downloadService = DownloadService()
-  let queryService = QueryService()
+  private let documentsPath: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+  private let downloadService = DownloadService()
+  private let queryService = QueryService()
+  private let cellHeight: CGFloat = 116
   
   // MARK: - Variables And Properties
   
-  lazy var downloadsSession: URLSession = {
+  private lazy var downloadsSession: URLSession = {
     let configuration = URLSessionConfiguration.background(withIdentifier: "com.raywenderlich.HalfTunes.bgSession")
     return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
   }()
   
-  var searchResults: [Track] = []
-  
-  lazy var tapRecognizer: UITapGestureRecognizer = {
-    var recognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-    return recognizer
-  }()
+  private var tracks: [Track] = []
   
   // MARK: - UI
   
@@ -45,45 +41,28 @@ final class SearchViewController: BaseMVVMViewController<SearchViewModel> {
     $0.barStyle = .default
   }
   
-  private let collectionViewLayout = UICollectionViewFlowLayout().then {
-    let numberOfItemForRow: CGFloat = 1
-    let lineSpacing: CGFloat = 0
-    let interItemSpacing: CGFloat = 0
-    let inset: CGFloat = 0
-    let viewWidth: CGFloat = UIScreen.width
-    let collectionWidth: CGFloat = viewWidth - (inset * 2)
-    let cellWidth: CGFloat = (collectionWidth - (interItemSpacing * (numberOfItemForRow - 1))) / numberOfItemForRow
-    let cellHeight: CGFloat = 116
-    
-    $0.itemSize = CGSize(width: cellWidth, height: cellHeight)
-    $0.sectionInset = .init(top: 0, left: inset, bottom: 0, right: inset)
-    $0.scrollDirection = .vertical
-    $0.minimumLineSpacing = lineSpacing
-    $0.minimumInteritemSpacing = interItemSpacing
+  private lazy var collectionView = BaseCollectionView(layout: flowLayout()).then {
+    $0.register(TrackCell.self)
   }
   
-  private lazy var collectionView = UICollectionView(
-    frame: .zero,
-    collectionViewLayout: collectionViewLayout
-  ).then {
-    $0.showsHorizontalScrollIndicator = false
-    $0.showsVerticalScrollIndicator = false
-    $0.backgroundColor = .systemBackground
-    $0.alwaysBounceVertical = true
-    $0.register(TrackCell.self, forCellWithReuseIdentifier: TrackCell.description)
-  }
+  // MARK: - Action
   
-  // MARK: - Internal Methods
+  private lazy var tapRecognizer: UITapGestureRecognizer = {
+    var recognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+    return recognizer
+  }()
   
-  @objc func dismissKeyboard() {
+  // MARK: - Methods
+  
+  @objc private func dismissKeyboard() {
     searchBar.resignFirstResponder()
   }
   
-  func localFilePath(for url: URL) -> URL {
+  private func localFilePath(for url: URL) -> URL {
     return documentsPath.appendingPathComponent(url.lastPathComponent)
   }
   
-  func playDownload(_ track: Track) {
+  private func playDownload(_ track: Track) {
     guard let previewURL = track.previewUrl else { return }
     let playerViewController = AVPlayerViewController()
     present(playerViewController, animated: true, completion: nil)
@@ -94,15 +73,26 @@ final class SearchViewController: BaseMVVMViewController<SearchViewModel> {
     player.play()
   }
   
+  private func reload(_ row: Int) {
+    collectionView.reloadItems(at: [IndexPath(row: row, section: 0)])
+  }
+  
   func position(for bar: UIBarPositioning) -> UIBarPosition {
     return .topAttached
   }
   
-  func reload(_ row: Int) {
-    collectionView.reloadItems(at: [IndexPath(row: row, section: 0)])
+  // MARK: - UIViewController Transition Coordinator
+  
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    
+    guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+      return
+    }
+    flowLayout.invalidateLayout()
   }
   
-  // MARK: - View Controller
+  // MARK: - View Life Cycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -125,29 +115,17 @@ final class SearchViewController: BaseMVVMViewController<SearchViewModel> {
   
   private func configureConstraints() {
     searchBar.snp.makeConstraints {
-      $0.top.left.right.equalTo(view.safeAreaLayoutGuide)
+      $0.top.equalTo(view.safeAreaLayoutGuide)
+      $0.left.right.equalToSuperview()
     }
     collectionView.snp.makeConstraints {
       $0.top.equalTo(searchBar.snp.bottom)
-      $0.left.right.equalTo(view.safeAreaLayoutGuide)
-      $0.bottom.equalToSuperview()
+      $0.left.right.bottom.equalToSuperview()
     }
   }
   
   private func configureGesture() {
     searchBar.delegate = self
-    
-//    searchBar.rx.text.orEmpty
-//      .debounce(RxTimeInterval.microseconds(5), scheduler: MainScheduler.instance) //0.5초 기다림
-//      .distinctUntilChanged() // 같은 아이템을 받지 않는 기능
-//      .subscribe(onNext: { keyword in
-//        //self.searchResults = self.samples.filter { $0.hasPrefix(keyword) }
-//        self.collectionView.reloadData()
-//      })
-//      .disposed(by: disposeBag)
-    
-//    searchBar.rx.setDelegate(self)
-//      .disposed(by: disposeBag)
   }
 }
 
@@ -160,10 +138,9 @@ extension SearchViewController: UISearchBarDelegate {
       return
     }
     
-    queryService.getSearchResults(searchTerm: searchText) { [weak self] results, errorMessage in
-
-      if let results = results {
-        self?.searchResults = results
+    queryService.getResults(path: .search, term: searchText) { [weak self] tracks, errorMessage in
+      if let tracks = tracks {
+        self?.tracks = tracks
         self?.collectionView.delegate = self
         self?.collectionView.dataSource = self
         self?.collectionView.reloadData()
@@ -183,7 +160,7 @@ extension SearchViewController: UISearchBarDelegate {
     
     viewModel.track
       .asDriver()
-      .drive(collectionView.rx.items(cellIdentifier: TrackCell.description)) { index, viewModel, cell in
+      .drive(collectionView.rx.items(cellIdentifier: TrackCell.reuseIdentifier)) { index, viewModel, cell in
         guard
           let trackCell: TrackCell = cell as? TrackCell,
           let previewUrl = viewModel.previewUrl
@@ -221,7 +198,7 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let track = searchResults[indexPath.row]
+    let track = tracks[indexPath.row]
     
     if track.downloaded {
       playDownload(track)
@@ -235,8 +212,7 @@ extension SearchViewController: UICollectionViewDataSource {
     _ collectionView: UICollectionView,
     numberOfItemsInSection section: Int
   ) -> Int {
-    
-    return searchResults.count
+    return tracks.count
   }
   
   func collectionView(
@@ -244,9 +220,9 @@ extension SearchViewController: UICollectionViewDataSource {
     cellForItemAt indexPath: IndexPath
   ) -> UICollectionViewCell {
     
-    let cell: TrackCell = collectionView.dequeueReusableCell(withReuseIdentifier: TrackCell.description, for: indexPath) as! TrackCell
+    let cell: TrackCell = collectionView.dequeueReusableCell(for: indexPath)
     
-    let track = searchResults[indexPath.row]
+    let track = tracks[indexPath.row]
     guard let previewUrl = track.previewUrl else { return cell }
     cell.configure(track: track, download: downloadService.activeDownloads[previewUrl])
     cell.delegate = self
@@ -259,7 +235,7 @@ extension SearchViewController: UICollectionViewDataSource {
 extension SearchViewController: TrackCellDelegate {
   func cancelTapped(_ cell: TrackCell) {
     if let indexPath = collectionView.indexPath(for: cell) {
-      let track = searchResults[indexPath.row]
+      let track = tracks[indexPath.row]
       downloadService.cancelDownload(track)
       reload(indexPath.row)
     }
@@ -267,7 +243,7 @@ extension SearchViewController: TrackCellDelegate {
   
   func downloadTapped(_ cell: TrackCell) {
     if let indexPath = collectionView.indexPath(for: cell) {
-      let track = searchResults[indexPath.row]
+      let track = tracks[indexPath.row]
       downloadService.startDownload(track)
       reload(indexPath.row)
     }
@@ -275,7 +251,7 @@ extension SearchViewController: TrackCellDelegate {
   
   func pauseTapped(_ cell: TrackCell) {
     if let indexPath = collectionView.indexPath(for: cell) {
-      let track = searchResults[indexPath.row]
+      let track = tracks[indexPath.row]
       downloadService.pauseDownload(track)
       reload(indexPath.row)
     }
@@ -283,7 +259,7 @@ extension SearchViewController: TrackCellDelegate {
   
   func resumeTapped(_ cell: TrackCell) {
     if let indexPath = collectionView.indexPath(for: cell) {
-      let track = searchResults[indexPath.row]
+      let track = tracks[indexPath.row]
       downloadService.resumeDownload(track)
       reload(indexPath.row)
     }
@@ -366,5 +342,34 @@ extension SearchViewController: URLSessionDownloadDelegate {
         trackCell.updateDisplay(progress: download.progress, totalSize: totalSize)
       }
     }
+  }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension SearchViewController: UICollectionViewDelegateFlowLayout {
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return itemSize(width: collectionView, height: cellHeight)
+  }
+}
+
+// MARK: - FlowLayoutMetric
+
+extension SearchViewController: FlowLayoutMetric {
+  var numberOfItemForRow: CGFloat {
+    1
+  }
+  
+  var inset: CGFloat {
+    0
+  }
+  
+  var lineSpacing: CGFloat {
+    0
+  }
+  
+  var interItemSpacing: CGFloat {
+    0
   }
 }

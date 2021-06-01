@@ -2,7 +2,7 @@
 //  Download.swift
 //  iTunesExplorer
 //
-//  Created by YangJinMo on 2021/04/21.
+//  Created by Jmy on 2021/04/21.
 //
 
 import Foundation

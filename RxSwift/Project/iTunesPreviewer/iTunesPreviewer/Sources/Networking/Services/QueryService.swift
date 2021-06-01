@@ -30,16 +30,15 @@ class QueryService: QueryServiceProtocol {
       
       self.dataTask?.cancel()
       
-      guard var urlComponents = URLComponents(string: "https://itunes.apple.com/search") else {
+      guard var urlComponents: URLComponents = "https://itunes.apple.com/search".urlComponents else {
         observer.onError(NSError(domain: "error: urlComponents", code: -1, userInfo: nil))
         return Disposables.create()
       }
+       
+      let query: String = searchTerm.replacingOccurrences(of: " ", with: "+")
+      urlComponents.query = "media=music&entity=song&term=\(query)".encode
       
-      let query = searchTerm.replacingOccurrences(of: " ", with: "+")
-      urlComponents.query = "media=music&entity=song&term=\(query)"
-        .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-      
-      guard let url = urlComponents.url else {
+      guard let url: URL = urlComponents.url else {
         observer.onError(NSError(domain: "error: \(urlComponents.string ?? "")", code: -1, userInfo: nil))
         return Disposables.create()
       }
@@ -49,7 +48,7 @@ class QueryService: QueryServiceProtocol {
           self?.dataTask = nil
         }
         
-        if let error = error {
+        if let error: Error = error {
           observer.onError(NSError(domain: "error: \(error.localizedDescription)", code: -1, userInfo: nil))
         } else if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
           do {

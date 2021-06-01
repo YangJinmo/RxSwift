@@ -2,7 +2,7 @@
 //  UIImageView.swift
 //  iTunesExplorer
 //
-//  Created by YangJinMo on 2021/04/23.
+//  Created by Jmy on 2021/04/23.
 //
 
 import UIKit
@@ -12,7 +12,7 @@ extension UIImageView {
   func setImage(urlString: String?, placeholder: UIImage? = nil) {
     guard
       let urlString: String = urlString,
-      let url: URL = urlString.toURL
+      let url: URL = urlString.url
     else {
       return
     }
@@ -58,7 +58,7 @@ extension UIImageView {
   }
   
   func downloadImage(urlString: String, placeholder: UIImage? = nil) {
-    guard let url: URL = urlString.toURL else {
+    guard let url: URL = urlString.url else {
       "fail: convert URL".log()
       return
     }

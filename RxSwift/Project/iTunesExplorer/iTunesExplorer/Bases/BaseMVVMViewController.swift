@@ -2,7 +2,7 @@
 //  BaseMVVMViewController.swift
 //  iTunesExplorer
 //
-//  Created by YangJinMo on 2021/04/20.
+//  Created by Jmy on 2021/04/20.
 //
 
 import UIKit

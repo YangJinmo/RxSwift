@@ -2,18 +2,25 @@
 //  BaseCollectionViewCell.swift
 //  iTunesExplorer
 //
-//  Created by YangJinMo on 2021/04/21.
+//  Created by Jmy on 2021/04/21.
 //
 
 import UIKit
 
 class BaseCollectionViewCell: UICollectionViewCell {
   
+  // MARK: - Convenience Initialization
+  
+  convenience init() {
+    self.init(frame: .zero)
+  }
+  
   // MARK: - Initialization
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     
+    backgroundColor = .systemBackground
     setupViews()
   }
   

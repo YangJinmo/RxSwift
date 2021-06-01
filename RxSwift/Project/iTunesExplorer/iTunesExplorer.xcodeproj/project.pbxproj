@@ -18,16 +18,18 @@
 		0991A1AC262EA66300A0AEDE /* iTunesExplorerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0991A1AB262EA66300A0AEDE /* iTunesExplorerTests.swift */; };
 		0991A1B7262EA66300A0AEDE /* iTunesExplorerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0991A1B6262EA66300A0AEDE /* iTunesExplorerUITests.swift */; };
 		0991A1CA262EA6AF00A0AEDE /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0991A1C9262EA6AF00A0AEDE /* AppCoordinator.swift */; };
+		09957D65266524710072A687 /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957D64266524710072A687 /* URLComponents.swift */; };
+		09957D6A2665D5E10072A687 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957D692665D5E10072A687 /* UICollectionView.swift */; };
+		09957D762665D6B50072A687 /* FlowLayoutMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957D752665D6B50072A687 /* FlowLayoutMetric.swift */; };
+		09957D7B2665D7430072A687 /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957D7A2665D7430072A687 /* BaseCollectionView.swift */; };
 		09A78CCA262FD88100412247 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A78CC9262FD88100412247 /* SearchViewModel.swift */; };
 		09A78CE2262FE7D200412247 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A78CE1262FE7D200412247 /* BaseCollectionViewCell.swift */; };
 		09A78D0F2630629800412247 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A78D0E2630629800412247 /* UIView.swift */; };
 		09A78D17263062C200412247 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A78D16263062C200412247 /* UIButton.swift */; };
 		09A78D1C263062E700412247 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A78D1B263062E700412247 /* UIColor.swift */; };
 		09A78D212630630600412247 /* CGColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A78D202630630600412247 /* CGColor.swift */; };
-		09A78D3526308A1100412247 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A78D3426308A1100412247 /* UIScreen.swift */; };
 		09A78D4126310D3E00412247 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A78D4026310D3E00412247 /* String.swift */; };
 		09A78D462632567900412247 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A78D452632567900412247 /* UIImageView.swift */; };
-		09A78D4D2632CB3E00412247 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A78D4C2632CB3E00412247 /* NSObject.swift */; };
 		09EE2045262FCC2100D22A1A /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE2044262FCC2100D22A1A /* Track.swift */; };
 		09EE204A262FCC4000D22A1A /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE2049262FCC4000D22A1A /* Download.swift */; };
 		09EE2052262FCC6F00D22A1A /* QueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE2051262FCC6F00D22A1A /* QueryService.swift */; };
@@ -75,16 +77,18 @@
 		0991A1B8262EA66300A0AEDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0991A1C9262EA6AF00A0AEDE /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		0991A1F1262EA87E00A0AEDE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09957D64266524710072A687 /* URLComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLComponents.swift; sourceTree = "<group>"; };
+		09957D692665D5E10072A687 /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		09957D752665D6B50072A687 /* FlowLayoutMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayoutMetric.swift; sourceTree = "<group>"; };
+		09957D7A2665D7430072A687 /* BaseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
 		09A78CC9262FD88100412247 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		09A78CE1262FE7D200412247 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		09A78D0E2630629800412247 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		09A78D16263062C200412247 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		09A78D1B263062E700412247 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		09A78D202630630600412247 /* CGColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGColor.swift; sourceTree = "<group>"; };
-		09A78D3426308A1100412247 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		09A78D4026310D3E00412247 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		09A78D452632567900412247 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
-		09A78D4C2632CB3E00412247 /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
 		09EE2044262FCC2100D22A1A /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		09EE2049262FCC4000D22A1A /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
 		09EE2051262FCC6F00D22A1A /* QueryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryService.swift; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 			children = (
 				090B9F2B262EC1D70057611B /* BaseMVVMViewController.swift */,
 				090B9F23262EBDD70057611B /* BaseViewModel.swift */,
+				09957D7A2665D7430072A687 /* BaseCollectionView.swift */,
 				09A78CE1262FE7D200412247 /* BaseCollectionViewCell.swift */,
 			);
 			path = Bases;
@@ -175,6 +180,7 @@
 			children = (
 				0991A1C7262EA68500A0AEDE /* Application */,
 				090B9F22262EBDC60057611B /* Bases */,
+				09957D742665D69A0072A687 /* Commons */,
 				0991A1D2262EA70600A0AEDE /* Networking */,
 				0991A1D3262EA71600A0AEDE /* Models */,
 				0991A1D4262EA72800A0AEDE /* ViewModels */,
@@ -274,17 +280,25 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		09957D742665D69A0072A687 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				09957D752665D6B50072A687 /* FlowLayoutMetric.swift */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
 		09A78D0D2630627300412247 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				09A78D3426308A1100412247 /* UIScreen.swift */,
 				09A78D0E2630629800412247 /* UIView.swift */,
 				09A78D16263062C200412247 /* UIButton.swift */,
 				09A78D452632567900412247 /* UIImageView.swift */,
+				09957D692665D5E10072A687 /* UICollectionView.swift */,
 				09A78D1B263062E700412247 /* UIColor.swift */,
 				09A78D202630630600412247 /* CGColor.swift */,
 				09A78D4026310D3E00412247 /* String.swift */,
-				09A78D4C2632CB3E00412247 /* NSObject.swift */,
+				09957D64266524710072A687 /* URLComponents.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -558,7 +572,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09A78D4D2632CB3E00412247 /* NSObject.swift in Sources */,
+				09957D6A2665D5E10072A687 /* UICollectionView.swift in Sources */,
 				0991A19C262EA66100A0AEDE /* iTunesExplorer.xcdatamodeld in Sources */,
 				09EE2052262FCC6F00D22A1A /* QueryService.swift in Sources */,
 				09A78D0F2630629800412247 /* UIView.swift in Sources */,
@@ -567,20 +581,22 @@
 				09EE2057262FCC9400D22A1A /* DownloadService.swift in Sources */,
 				09A78D462632567900412247 /* UIImageView.swift in Sources */,
 				09A78CCA262FD88100412247 /* SearchViewModel.swift in Sources */,
+				09957D7B2665D7430072A687 /* BaseCollectionView.swift in Sources */,
 				0991A1CA262EA6AF00A0AEDE /* AppCoordinator.swift in Sources */,
 				09A78D212630630600412247 /* CGColor.swift in Sources */,
 				090B9F2C262EC1D70057611B /* BaseMVVMViewController.swift in Sources */,
 				090B9F34262EEAD30057611B /* AppContainer.swift in Sources */,
 				09A78CE2262FE7D200412247 /* BaseCollectionViewCell.swift in Sources */,
 				09EE2062262FCE9500D22A1A /* TrackCell.swift in Sources */,
+				09957D65266524710072A687 /* URLComponents.swift in Sources */,
 				090B9F24262EBDD70057611B /* BaseViewModel.swift in Sources */,
 				09EE205C262FCDE500D22A1A /* SearchViewController.swift in Sources */,
 				0991A192262EA66100A0AEDE /* AppDelegate.swift in Sources */,
+				09957D762665D6B50072A687 /* FlowLayoutMetric.swift in Sources */,
 				0991A194262EA66100A0AEDE /* SceneDelegate.swift in Sources */,
 				09EE2045262FCC2100D22A1A /* Track.swift in Sources */,
 				09A78D4126310D3E00412247 /* String.swift in Sources */,
 				09EE204A262FCC4000D22A1A /* Download.swift in Sources */,
-				09A78D3526308A1100412247 /* UIScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
