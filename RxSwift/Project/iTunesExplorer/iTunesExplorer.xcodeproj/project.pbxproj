@@ -153,6 +153,21 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		097118682667A3E600E16ECD /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				0991A1C7262EA68500A0AEDE /* Application */,
+				090B9F22262EBDC60057611B /* Bases */,
+				09957D742665D69A0072A687 /* Commons */,
+				0991A1D2262EA70600A0AEDE /* Networking */,
+				0991A1D3262EA71600A0AEDE /* Models */,
+				0991A1D4262EA72800A0AEDE /* ViewModels */,
+				0991A1D5262EA73500A0AEDE /* Views */,
+				09A78D0D2630627300412247 /* Extensions */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		0991A185262EA66100A0AEDE = {
 			isa = PBXGroup;
 			children = (
@@ -178,17 +193,9 @@
 		0991A190262EA66100A0AEDE /* iTunesExplorer */ = {
 			isa = PBXGroup;
 			children = (
-				0991A1C7262EA68500A0AEDE /* Application */,
-				090B9F22262EBDC60057611B /* Bases */,
-				09957D742665D69A0072A687 /* Commons */,
-				0991A1D2262EA70600A0AEDE /* Networking */,
-				0991A1D3262EA71600A0AEDE /* Models */,
-				0991A1D4262EA72800A0AEDE /* ViewModels */,
-				0991A1D5262EA73500A0AEDE /* Views */,
-				09A78D0D2630627300412247 /* Extensions */,
-				0991A1D6262EA74100A0AEDE /* Storyboards */,
-				0991A1D7262EA74E00A0AEDE /* Supporting Files */,
+				097118682667A3E600E16ECD /* Sources */,
 				0991A1D1262EA6D900A0AEDE /* Resources */,
+				0991A1D7262EA74E00A0AEDE /* Supporting Files */,
 			);
 			path = iTunesExplorer;
 			sourceTree = "<group>";
@@ -225,6 +232,7 @@
 		0991A1D1262EA6D900A0AEDE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0991A19F262EA66300A0AEDE /* LaunchScreen.storyboard */,
 				0991A19D262EA66300A0AEDE /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -261,14 +269,6 @@
 				09EE2060262FCE7700D22A1A /* Search */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		0991A1D6262EA74100A0AEDE /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				0991A19F262EA66300A0AEDE /* LaunchScreen.storyboard */,
-			);
-			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		0991A1D7262EA74E00A0AEDE /* Supporting Files */ = {
