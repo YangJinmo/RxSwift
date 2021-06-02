@@ -42,6 +42,8 @@ final class SearchViewController: BaseMVVMViewController<SearchViewModel> {
   }
   
   private lazy var collectionView = BaseCollectionView(layout: flowLayout()).then {
+    $0.dataSource = self
+    $0.delegate = self
     $0.register(TrackCell.self)
   }
   
@@ -141,8 +143,6 @@ extension SearchViewController: UISearchBarDelegate {
     queryService.getResults(path: .search, term: searchText) { [weak self] tracks, errorMessage in
       if let tracks = tracks {
         self?.tracks = tracks
-        self?.collectionView.delegate = self
-        self?.collectionView.dataSource = self
         self?.collectionView.reloadData()
         self?.collectionView.setContentOffset(.zero, animated: false)
       }
