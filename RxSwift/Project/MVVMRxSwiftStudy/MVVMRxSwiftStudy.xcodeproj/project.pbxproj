@@ -143,14 +143,8 @@
 		0991A190262EA66100A0AEDE /* MVVMRxSwiftStudy */ = {
 			isa = PBXGroup;
 			children = (
-				0991A1C7262EA68500A0AEDE /* Application */,
+				09EDB4A72667AA26002BDDAE /* Sources */,
 				0991A1D1262EA6D900A0AEDE /* Resources */,
-				090B9F22262EBDC60057611B /* Base */,
-				0991A1D2262EA70600A0AEDE /* Service */,
-				0991A1D3262EA71600A0AEDE /* Model */,
-				0991A1D4262EA72800A0AEDE /* ViewModel */,
-				0991A1D5262EA73500A0AEDE /* View */,
-				0991A1D6262EA74100A0AEDE /* Storyboard */,
 				0991A1D7262EA74E00A0AEDE /* Supporting Files */,
 			);
 			path = MVVMRxSwiftStudy;
@@ -188,6 +182,8 @@
 		0991A1D1262EA6D900A0AEDE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0991A197262EA66100A0AEDE /* Main.storyboard */,
+				0991A19F262EA66300A0AEDE /* LaunchScreen.storyboard */,
 				0991A19D262EA66300A0AEDE /* Assets.xcassets */,
 				0991A1D8262EA7C800A0AEDE /* restaurants.json */,
 			);
@@ -226,15 +222,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		0991A1D6262EA74100A0AEDE /* Storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				0991A197262EA66100A0AEDE /* Main.storyboard */,
-				0991A19F262EA66300A0AEDE /* LaunchScreen.storyboard */,
-			);
-			path = Storyboard;
-			sourceTree = "<group>";
-		};
 		0991A1D7262EA74E00A0AEDE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +229,19 @@
 				0991A19A262EA66100A0AEDE /* iTunesExplorer.xcdatamodeld */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		09EDB4A72667AA26002BDDAE /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				0991A1C7262EA68500A0AEDE /* Application */,
+				090B9F22262EBDC60057611B /* Base */,
+				0991A1D2262EA70600A0AEDE /* Service */,
+				0991A1D3262EA71600A0AEDE /* Model */,
+				0991A1D4262EA72800A0AEDE /* ViewModel */,
+				0991A1D5262EA73500A0AEDE /* View */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		397E295A1CB9FE753F41B6F3 /* Pods */ = {
