@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  MVVMRxSwift
 //
-//  Created by YangJinMo on 2021/04/08.
+//  Created by Jmy on 2021/04/08.
 //
 
 import UIKit

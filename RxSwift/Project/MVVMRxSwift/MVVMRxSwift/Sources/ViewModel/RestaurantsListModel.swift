@@ -2,7 +2,7 @@
 //  RestaurantsListModel.swift
 //  MVVMRxSwift
 //
-//  Created by YangJinMo on 2021/04/11.
+//  Created by Jmy on 2021/04/11.
 //
 
 import Foundation

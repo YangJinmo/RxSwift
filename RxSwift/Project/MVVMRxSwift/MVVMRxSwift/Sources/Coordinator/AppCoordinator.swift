@@ -2,7 +2,7 @@
 //  AppCoordinator.swift
 //  MVVMRxSwift
 //
-//  Created by YangJinMo on 2021/04/09.
+//  Created by Jmy on 2021/04/09.
 //
 
 import UIKit
