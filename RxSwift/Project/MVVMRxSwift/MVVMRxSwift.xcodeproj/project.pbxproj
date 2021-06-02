@@ -63,15 +63,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		09261742262803CD0038DFC7 /* Storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				09D02498261F4573009CD36A /* Main.storyboard */,
-				09D0249D261F4575009CD36A /* LaunchScreen.storyboard */,
-			);
-			path = Storyboard;
-			sourceTree = "<group>";
-		};
 		09261753262804E40038DFC7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +77,30 @@
 				0979FA18261F705A008F7632 /* RestaurantService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		0971187E2667A8C000E16ECD /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				09E49C46262805E2002C0985 /* Application */,
+				09E49C45262805D4002C0985 /* Coordinator */,
+				09261754262804F00038DFC7 /* Service */,
+				0979FA5426272D15008F7632 /* Model */,
+				09261753262804E40038DFC7 /* ViewModel */,
+				0926173F2628014C0038DFC7 /* View */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		0971187F2667A8E700E16ECD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				09D02498261F4573009CD36A /* Main.storyboard */,
+				09D0249D261F4575009CD36A /* LaunchScreen.storyboard */,
+				09D0249B261F4575009CD36A /* Assets.xcassets */,
+				0979FA12261F6E3E008F7632 /* restaurants.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		0979FA5426272D15008F7632 /* Model */ = {
@@ -117,26 +132,11 @@
 		09D02491261F4573009CD36A /* MVVMRxSwift */ = {
 			isa = PBXGroup;
 			children = (
-				09E49C46262805E2002C0985 /* Application */,
-				09E49C45262805D4002C0985 /* Coordinator */,
-				09E49C43262805B5002C0985 /* Resources */,
-				09261754262804F00038DFC7 /* Service */,
-				0979FA5426272D15008F7632 /* Model */,
-				09261753262804E40038DFC7 /* ViewModel */,
-				0926173F2628014C0038DFC7 /* View */,
-				09261742262803CD0038DFC7 /* Storyboard */,
+				0971187E2667A8C000E16ECD /* Sources */,
+				0971187F2667A8E700E16ECD /* Resources */,
 				09E49C4826280656002C0985 /* Supporting Files */,
 			);
 			path = MVVMRxSwift;
-			sourceTree = "<group>";
-		};
-		09E49C43262805B5002C0985 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				09D0249B261F4575009CD36A /* Assets.xcassets */,
-				0979FA12261F6E3E008F7632 /* restaurants.json */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		09E49C45262805D4002C0985 /* Coordinator */ = {
