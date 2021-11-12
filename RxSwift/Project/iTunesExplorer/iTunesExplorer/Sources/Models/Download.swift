@@ -8,8 +8,6 @@
 import Foundation
 
 class Download {
-    // MARK: - Variables And Properties
-
     var isDownloading = false
     var progress: Float = 0
     var resumeData: Data?

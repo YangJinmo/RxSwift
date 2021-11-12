@@ -27,7 +27,6 @@
 		094526692638778C00D2995A /* MusicsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526682638778C00D2995A /* MusicsViewModel.swift */; };
 		0945266E263877B900D2995A /* MusicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945266D263877B900D2995A /* MusicsViewController.swift */; };
 		094526762638784300D2995A /* MusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526752638784300D2995A /* MusicCell.swift */; };
-		0945267B2638788100D2995A /* CGColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945267A2638788100D2995A /* CGColor.swift */; };
 		09452685263878F500D2995A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09452684263878F500D2995A /* UIView.swift */; };
 		0945268A2638791600D2995A /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526892638791600D2995A /* UIImageView.swift */; };
 		0945268F2638793E00D2995A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945268E2638793E00D2995A /* String.swift */; };
@@ -38,6 +37,8 @@
 		094526F4263970D100D2995A /* MusicControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526F3263970D100D2995A /* MusicControlButton.swift */; };
 		0945270B263978A700D2995A /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945270A263978A700D2995A /* Music.swift */; };
 		09957D4F2664B1450072A687 /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957D4E2664B1450072A687 /* URLComponents.swift */; };
+		09A46227273E35AC00A0939F /* UIEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A46226273E35AC00A0939F /* UIEdgeInsets.swift */; };
+		09A4622B273E37CA00A0939F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4622A273E37CA00A0939F /* UIViewController.swift */; };
 		1F8CDD5DF3269E24B839557C /* Pods_iTunesPreviewer_iTunesPreviewerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C283C20EB3C3B063ADA5A6 /* Pods_iTunesPreviewer_iTunesPreviewerUITests.framework */; };
 		5ECBDEDD583F88E7950FFE7D /* Pods_iTunesPreviewerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF21010FA611E692F1F3345 /* Pods_iTunesPreviewerTests.framework */; };
 		FB52CF69E64FB00F97D880E3 /* Pods_iTunesPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74EDAF88647CFF548A7EE253 /* Pods_iTunesPreviewer.framework */; };
@@ -87,7 +88,6 @@
 		094526682638778C00D2995A /* MusicsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicsViewModel.swift; sourceTree = "<group>"; };
 		0945266D263877B900D2995A /* MusicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicsViewController.swift; sourceTree = "<group>"; };
 		094526752638784300D2995A /* MusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCell.swift; sourceTree = "<group>"; };
-		0945267A2638788100D2995A /* CGColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGColor.swift; sourceTree = "<group>"; };
 		09452684263878F500D2995A /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		094526892638791600D2995A /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		0945268E2638793E00D2995A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -98,6 +98,8 @@
 		094526F3263970D100D2995A /* MusicControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicControlButton.swift; sourceTree = "<group>"; };
 		0945270A263978A700D2995A /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		09957D4E2664B1450072A687 /* URLComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLComponents.swift; sourceTree = "<group>"; };
+		09A46226273E35AC00A0939F /* UIEdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsets.swift; sourceTree = "<group>"; };
+		09A4622A273E37CA00A0939F /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		0E18B219958A1A37434D3FD0 /* Pods-iTunesPreviewer-iTunesPreviewerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesPreviewer-iTunesPreviewerUITests.release.xcconfig"; path = "Target Support Files/Pods-iTunesPreviewer-iTunesPreviewerUITests/Pods-iTunesPreviewer-iTunesPreviewerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2C16A93C5BD294AAE1F7452F /* Pods-iTunesPreviewerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesPreviewerTests.release.xcconfig"; path = "Target Support Files/Pods-iTunesPreviewerTests/Pods-iTunesPreviewerTests.release.xcconfig"; sourceTree = "<group>"; };
 		74EDAF88647CFF548A7EE253 /* Pods_iTunesPreviewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTunesPreviewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +157,7 @@
 				094525E92638696200D2995A /* Models */,
 				094525E82638695B00D2995A /* ViewModels */,
 				094525E72638695500D2995A /* Views */,
+				09A46228273E36AA00A0939F /* ViewControllers */,
 				094525EA2638699C00D2995A /* Extensions */,
 			);
 			path = Sources;
@@ -231,9 +234,8 @@
 		094525E72638695500D2995A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0945266D263877B900D2995A /* MusicsViewController.swift */,
+				09A46229273E36C800A0939F /* Bases */,
 				094526752638784300D2995A /* MusicCell.swift */,
-				094526B626391CEF00D2995A /* PlayerViewController.swift */,
 				094526F3263970D100D2995A /* MusicControlButton.swift */,
 			);
 			path = Views;
@@ -259,12 +261,13 @@
 		094525EA2638699C00D2995A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				09452633263874AC00D2995A /* UIColor.swift */,
-				0945267A2638788100D2995A /* CGColor.swift */,
 				09452684263878F500D2995A /* UIView.swift */,
 				094526CE2639400900D2995A /* UIStackView.swift */,
 				094526892638791600D2995A /* UIImageView.swift */,
 				090947DD266281DB0017B82B /* UICollectionView.swift */,
+				09A4622A273E37CA00A0939F /* UIViewController.swift */,
+				09A46226273E35AC00A0939F /* UIEdgeInsets.swift */,
+				09452633263874AC00D2995A /* UIColor.swift */,
 				0945268E2638793E00D2995A /* String.swift */,
 				09957D4E2664B1450072A687 /* URLComponents.swift */,
 			);
@@ -303,6 +306,22 @@
 			children = (
 				0945264C2638762F00D2995A /* BaseMVVMViewController.swift */,
 				094526512638764800D2995A /* BaseViewModel.swift */,
+			);
+			path = Bases;
+			sourceTree = "<group>";
+		};
+		09A46228273E36AA00A0939F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0945266D263877B900D2995A /* MusicsViewController.swift */,
+				094526B626391CEF00D2995A /* PlayerViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		09A46229273E36C800A0939F /* Bases */ = {
+			isa = PBXGroup;
+			children = (
 				094526D6263944E800D2995A /* BaseButton.swift */,
 				090947EE2663BF8F0017B82B /* BaseCollectionView.swift */,
 				094526592638768E00D2995A /* BaseCollectionViewCell.swift */,
@@ -578,11 +597,13 @@
 				090947EF2663BF8F0017B82B /* BaseCollectionView.swift in Sources */,
 				0945259C263837E700D2995A /* AppDelegate.swift in Sources */,
 				090947DE266281DB0017B82B /* UICollectionView.swift in Sources */,
+				09A46227273E35AC00A0939F /* UIEdgeInsets.swift in Sources */,
 				094526692638778C00D2995A /* MusicsViewModel.swift in Sources */,
 				0945265A2638768E00D2995A /* BaseCollectionViewCell.swift in Sources */,
 				094526522638764800D2995A /* BaseViewModel.swift in Sources */,
 				094526B726391CEF00D2995A /* PlayerViewController.swift in Sources */,
 				094526D7263944E800D2995A /* BaseButton.swift in Sources */,
+				09A4622B273E37CA00A0939F /* UIViewController.swift in Sources */,
 				094526762638784300D2995A /* MusicCell.swift in Sources */,
 				094526AF26391AC300D2995A /* Musics.swift in Sources */,
 				0945266E263877B900D2995A /* MusicsViewController.swift in Sources */,
@@ -595,7 +616,6 @@
 				09452642263875BC00D2995A /* AppContainer.swift in Sources */,
 				09452685263878F500D2995A /* UIView.swift in Sources */,
 				094526CF2639400900D2995A /* UIStackView.swift in Sources */,
-				0945267B2638788100D2995A /* CGColor.swift in Sources */,
 				0945264D2638762F00D2995A /* BaseMVVMViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

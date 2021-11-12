@@ -10,8 +10,6 @@ import UIKit
 
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
-    // MARK: - Variables And Properties
-
     var backgroundSessionCompletionHandler: (() -> Void)?
     var window: UIWindow?
 
@@ -26,7 +24,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         backgroundSessionCompletionHandler = completionHandler
     }
 
-    // MARK: - Private Methods
+    // MARK: - Methods
 
     private func customizeAppearance() {
         window?.tintColor = .tintColor
@@ -34,9 +32,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         UISearchBar.appearance().barTintColor = .tintColor
 
         UINavigationBar.appearance().barTintColor = .tintColor
-        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().tintColor = .systemBackground
 
-        let titleTextAttributes = [NSAttributedString.Key(rawValue: NSAttributedString.Key.foregroundColor.rawValue): UIColor.white]
+        let titleTextAttributes = [NSAttributedString.Key(rawValue: NSAttributedString.Key.foregroundColor.rawValue): UIColor.systemBackground]
         UINavigationBar.appearance().titleTextAttributes = titleTextAttributes
     }
 

@@ -10,8 +10,6 @@ import RxSwift
 import UIKit
 
 final class PlayerViewController: UIViewController {
-    // MARK: - Private Constants
-
     private struct Image {
         static let backwardImage = UIImage(systemName: "backward.fill")
         static let pauseImage = UIImage(systemName: "pause.fill")
@@ -21,15 +19,13 @@ final class PlayerViewController: UIViewController {
 
     private let disposeBag: DisposeBag = DisposeBag()
     private let avPlayer: AVPlayer = AVPlayer()
-
-    // MARK: - Variables
-
     private var music: Music
 
     // MARK: - Initialization
 
     init(music: Music) {
         self.music = music
+        
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -37,7 +33,7 @@ final class PlayerViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - UI
+    // MARK: - Views
 
     private let albumImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
@@ -77,21 +73,24 @@ final class PlayerViewController: UIViewController {
         $0.setImage(Image.forwardImage, for: .normal)
     }
 
-    // MARK: - View Controller
+    // MARK: - View Life Cycle
+    
+    override func loadView() {
+        super.loadView()
+        
+        setupViews()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        configureSubviews()
-        configureConstraints()
-
+        
         bind(music: music)
         bind()
     }
 
-    // MARK: - Configuring
+    // MARK: - Methods
 
-    private func configureSubviews() {
+    private func setupViews() {
         view.backgroundColor = .systemBackground
 
         view.addSubviews(
@@ -107,9 +106,7 @@ final class PlayerViewController: UIViewController {
             playAndPauseButton,
             forwardButton
         )
-    }
-
-    private func configureConstraints() {
+        
         albumImageView.snp.makeConstraints {
             $0.top.left.right.equalToSuperview().inset(60)
             $0.width.equalTo(albumImageView.snp.height)

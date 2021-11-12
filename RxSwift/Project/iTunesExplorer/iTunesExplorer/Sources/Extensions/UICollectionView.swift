@@ -7,6 +7,12 @@
 
 import UIKit
 
+extension UICollectionReusableView {
+    static var reuseIdentifier: String {
+        return String(describing: Self.self)
+    }
+}
+
 extension UICollectionView {
     // MARK: UICollectionViewCell
 
@@ -50,21 +56,5 @@ extension UICollectionView {
             fatalError("Could not dequeue cell: \(T.self) with identifier: \(T.reuseIdentifier)")
         }
         return cell
-    }
-}
-
-extension UICollectionReusableView {
-    static var reuseIdentifier: String {
-        return String(describing: Self.self)
-    }
-}
-
-extension UIEdgeInsets {
-    init(horizontal: CGFloat, vertical: CGFloat) {
-        self.init(top: vertical, left: horizontal, bottom: vertical, right: horizontal)
-    }
-
-    static func uniform(size: CGFloat) -> UIEdgeInsets {
-        return UIEdgeInsets(top: size, left: size, bottom: size, right: size)
     }
 }

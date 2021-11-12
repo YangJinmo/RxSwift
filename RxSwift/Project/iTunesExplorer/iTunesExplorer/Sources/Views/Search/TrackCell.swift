@@ -15,7 +15,7 @@ protocol TrackCellDelegate {
 }
 
 final class TrackCell: BaseCollectionViewCell {
-    // MARK: - UI
+    // MARK: - Views
 
     private let albumImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
@@ -63,7 +63,7 @@ final class TrackCell: BaseCollectionViewCell {
         $0.backgroundColor = .secondarySystemBackground
     }
 
-    // MARK: - View Controller
+    // MARK: - View Life Cycle
 
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -76,15 +76,7 @@ final class TrackCell: BaseCollectionViewCell {
 
     override func setupViews() {
         super.setupViews()
-
-        configureSubviews()
-        configureConstraints()
-        configureGesture()
-    }
-
-    // MARK: - Configuring
-
-    private func configureSubviews() {
+        
         contentView.addSubviews(
             albumImageView,
             titleLabel,
@@ -96,9 +88,7 @@ final class TrackCell: BaseCollectionViewCell {
             progressLabel,
             dividerView
         )
-    }
-
-    private func configureConstraints() {
+        
         albumImageView.snp.makeConstraints {
             $0.top.left.bottom.equalToSuperview().inset(8)
             $0.width.height.equalTo(100)
@@ -137,15 +127,11 @@ final class TrackCell: BaseCollectionViewCell {
             $0.height.equalTo(1)
             $0.left.right.bottom.equalTo(0)
         }
-    }
-
-    private func configureGesture() {
+        
         cancelButton.addTarget(self, action: #selector(cancelTapped(_:)))
         downloadButton.addTarget(self, action: #selector(downloadTapped(_:)))
         pauseButton.addTarget(self, action: #selector(pauseOrResumeTapped(_:)))
     }
-
-    // MARK: - Variables And Properties
 
     /// Delegate identifies track for this cell, then
     /// passes this to a download service method.
@@ -175,7 +161,7 @@ final class TrackCell: BaseCollectionViewCell {
         }
     }
 
-    // MARK: - Internal Methods
+    // MARK: - Methods
 
     func configure(track: Track, download: Download?) {
         albumImageView.setImage(url: track.artworkUrl100)

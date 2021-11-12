@@ -8,8 +8,6 @@
 import UIKit
 
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-    // MARK: - Variables And Properties
-
     var appCoordinator: AppCoordinator?
 
     // MARK: - Lifecycle State Transitioning

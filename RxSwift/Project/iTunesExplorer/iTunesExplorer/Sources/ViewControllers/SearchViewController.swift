@@ -15,15 +15,11 @@ import Then
 import UIKit
 
 final class SearchViewController: BaseMVVMViewController<SearchViewModel> {
-    // MARK: - Constants
-
     /// Get local file path: download task stores tune here; AV player plays it.
     private let documentsPath: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     private let downloadService = DownloadService()
     private let queryService = QueryService()
     private let cellHeight: CGFloat = 116
-
-    // MARK: - Variables And Properties
 
     private lazy var downloadsSession: URLSession = {
         let configuration = URLSessionConfiguration.background(withIdentifier: "com.raywenderlich.HalfTunes.bgSession")
@@ -95,26 +91,28 @@ final class SearchViewController: BaseMVVMViewController<SearchViewModel> {
 
     // MARK: - View Life Cycle
 
+    override func loadView() {
+        super.loadView()
+
+        setupViews()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureSubviews()
-        configureConstraints()
-        configureGesture()
+        searchBar.delegate = self
 
         downloadService.downloadsSession = downloadsSession
     }
 
-    // MARK: - Configuring
+    // MARK: - Methods
 
-    private func configureSubviews() {
+    private func setupViews() {
         view.addSubviews(
             searchBar,
             collectionView
         )
-    }
 
-    private func configureConstraints() {
         searchBar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.left.right.equalToSuperview()
@@ -123,10 +121,6 @@ final class SearchViewController: BaseMVVMViewController<SearchViewModel> {
             $0.top.equalTo(searchBar.snp.bottom)
             $0.left.right.bottom.equalToSuperview()
         }
-    }
-
-    private func configureGesture() {
-        searchBar.delegate = self
     }
 }
 

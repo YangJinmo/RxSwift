@@ -22,12 +22,12 @@
 		09957D6A2665D5E10072A687 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957D692665D5E10072A687 /* UICollectionView.swift */; };
 		09957D762665D6B50072A687 /* FlowLayoutMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957D752665D6B50072A687 /* FlowLayoutMetric.swift */; };
 		09957D7B2665D7430072A687 /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957D7A2665D7430072A687 /* BaseCollectionView.swift */; };
+		09A46225273E343200A0939F /* UIEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A46224273E343200A0939F /* UIEdgeInsets.swift */; };
 		09A78CCA262FD88100412247 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A78CC9262FD88100412247 /* SearchViewModel.swift */; };
 		09A78CE2262FE7D200412247 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A78CE1262FE7D200412247 /* BaseCollectionViewCell.swift */; };
 		09A78D0F2630629800412247 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A78D0E2630629800412247 /* UIView.swift */; };
 		09A78D17263062C200412247 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A78D16263062C200412247 /* UIButton.swift */; };
 		09A78D1C263062E700412247 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A78D1B263062E700412247 /* UIColor.swift */; };
-		09A78D212630630600412247 /* CGColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A78D202630630600412247 /* CGColor.swift */; };
 		09A78D4126310D3E00412247 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A78D4026310D3E00412247 /* String.swift */; };
 		09A78D462632567900412247 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A78D452632567900412247 /* UIImageView.swift */; };
 		09EE2045262FCC2100D22A1A /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE2044262FCC2100D22A1A /* Track.swift */; };
@@ -81,12 +81,12 @@
 		09957D692665D5E10072A687 /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		09957D752665D6B50072A687 /* FlowLayoutMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayoutMetric.swift; sourceTree = "<group>"; };
 		09957D7A2665D7430072A687 /* BaseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
+		09A46224273E343200A0939F /* UIEdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsets.swift; sourceTree = "<group>"; };
 		09A78CC9262FD88100412247 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		09A78CE1262FE7D200412247 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		09A78D0E2630629800412247 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		09A78D16263062C200412247 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		09A78D1B263062E700412247 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		09A78D202630630600412247 /* CGColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGColor.swift; sourceTree = "<group>"; };
 		09A78D4026310D3E00412247 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		09A78D452632567900412247 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		09EE2044262FCC2100D22A1A /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
@@ -138,8 +138,6 @@
 			children = (
 				090B9F2B262EC1D70057611B /* BaseMVVMViewController.swift */,
 				090B9F23262EBDD70057611B /* BaseViewModel.swift */,
-				09957D7A2665D7430072A687 /* BaseCollectionView.swift */,
-				09A78CE1262FE7D200412247 /* BaseCollectionViewCell.swift */,
 			);
 			path = Bases;
 			sourceTree = "<group>";
@@ -163,6 +161,7 @@
 				0991A1D3262EA71600A0AEDE /* Models */,
 				0991A1D4262EA72800A0AEDE /* ViewModels */,
 				0991A1D5262EA73500A0AEDE /* Views */,
+				09A4622D273E525500A0939F /* ViewControllers */,
 				09A78D0D2630627300412247 /* Extensions */,
 			);
 			path = Sources;
@@ -266,6 +265,7 @@
 		0991A1D5262EA73500A0AEDE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				09A4622C273E514200A0939F /* Bases */,
 				09EE2060262FCE7700D22A1A /* Search */,
 			);
 			path = Views;
@@ -288,6 +288,23 @@
 			path = Commons;
 			sourceTree = "<group>";
 		};
+		09A4622C273E514200A0939F /* Bases */ = {
+			isa = PBXGroup;
+			children = (
+				09957D7A2665D7430072A687 /* BaseCollectionView.swift */,
+				09A78CE1262FE7D200412247 /* BaseCollectionViewCell.swift */,
+			);
+			path = Bases;
+			sourceTree = "<group>";
+		};
+		09A4622D273E525500A0939F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				09EE205B262FCDE500D22A1A /* SearchViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		09A78D0D2630627300412247 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,8 +312,8 @@
 				09A78D16263062C200412247 /* UIButton.swift */,
 				09A78D452632567900412247 /* UIImageView.swift */,
 				09957D692665D5E10072A687 /* UICollectionView.swift */,
+				09A46224273E343200A0939F /* UIEdgeInsets.swift */,
 				09A78D1B263062E700412247 /* UIColor.swift */,
-				09A78D202630630600412247 /* CGColor.swift */,
 				09A78D4026310D3E00412247 /* String.swift */,
 				09957D64266524710072A687 /* URLComponents.swift */,
 			);
@@ -306,7 +323,6 @@
 		09EE2060262FCE7700D22A1A /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				09EE205B262FCDE500D22A1A /* SearchViewController.swift */,
 				09EE2061262FCE9500D22A1A /* TrackCell.swift */,
 			);
 			path = Search;
@@ -583,7 +599,7 @@
 				09A78CCA262FD88100412247 /* SearchViewModel.swift in Sources */,
 				09957D7B2665D7430072A687 /* BaseCollectionView.swift in Sources */,
 				0991A1CA262EA6AF00A0AEDE /* AppCoordinator.swift in Sources */,
-				09A78D212630630600412247 /* CGColor.swift in Sources */,
+				09A46225273E343200A0939F /* UIEdgeInsets.swift in Sources */,
 				090B9F2C262EC1D70057611B /* BaseMVVMViewController.swift in Sources */,
 				090B9F34262EEAD30057611B /* AppContainer.swift in Sources */,
 				09A78CE2262FE7D200412247 /* BaseCollectionViewCell.swift in Sources */,

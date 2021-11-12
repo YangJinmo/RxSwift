@@ -9,7 +9,7 @@ import UIKit
 
 class MusicControlButton: BaseButton {
     // MARK: - Initialization
-
+    
     override func setupViews() {
         super.setupViews()
 

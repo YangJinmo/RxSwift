@@ -194,11 +194,7 @@ extension UIImageView {
 }
 
 final class ImageCacheManager {
-    // MARK: - Static Constants
-
     static let shared = NSCache<NSString, UIImage>()
-
-    // MARK: - Initialization
 
     private init() {}
 }

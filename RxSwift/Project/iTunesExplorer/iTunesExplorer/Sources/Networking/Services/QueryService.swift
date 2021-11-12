@@ -38,7 +38,7 @@ class QueryService: QueryServiceProtocol {
         return urlComponents
     }
 
-    // MARK: - Internal Methods
+    // MARK: - Methods
 
     private func fetch(
         path: Path,

@@ -9,16 +9,12 @@ import Foundation.NSURL
 
 /// Query service creates Track objects
 class Track: Decodable {
-    // MARK: - Constants
-
     let trackName: String?
     let artistName: String?
     let artworkUrl100: URL?
     let previewUrl: URL?
     let index: Int
-
-    // MARK: - Variables And Properties
-
+    
     var downloaded = false
 
     // MARK: - Initialization

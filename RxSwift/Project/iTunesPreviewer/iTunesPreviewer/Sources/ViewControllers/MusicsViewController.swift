@@ -15,11 +15,9 @@ import Then
 import UIKit
 
 final class MusicsViewController: BaseMVVMViewController<MusicsViewModel> {
-    // MARK: - Constants
-
     private let cellHeight: CGFloat = 116
 
-    // MARK: - UI
+    // MARK: - Views
 
     private let searchBar = UISearchBar().then {
         $0.placeholder = "Song name or artist"
@@ -29,7 +27,7 @@ final class MusicsViewController: BaseMVVMViewController<MusicsViewModel> {
         $0.register(MusicCell.self)
     }
 
-    // MARK: - Internal Methods
+    // MARK: - UIBarPosition
 
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
@@ -47,26 +45,27 @@ final class MusicsViewController: BaseMVVMViewController<MusicsViewModel> {
     }
 
     // MARK: - View Life Cycle
+    
+    override func loadView() {
+        super.loadView()
+        
+        setupViews()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureSubviews()
-        configureConstraints()
-
         bind()
     }
 
-    // MARK: - Configuring
+    // MARK: - Methods
 
-    private func configureSubviews() {
+    private func setupViews() {
         view.addSubviews(
             searchBar,
             collectionView
         )
-    }
-
-    private func configureConstraints() {
+        
         searchBar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.left.right.equalToSuperview()
@@ -106,7 +105,7 @@ final class MusicsViewController: BaseMVVMViewController<MusicsViewModel> {
         collectionView.rx.modelSelected(Music.self)
             .subscribe(onNext: { music in
                 let vc = PlayerViewController(music: music)
-                self.present(vc, animated: true, completion: nil)
+                self.present(vc)
             })
             .disposed(by: disposeBag)
 

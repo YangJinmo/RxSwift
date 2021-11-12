@@ -10,14 +10,12 @@ import Foundation
 /// Downloads song snippets, and stores in local file.
 /// Allows cancel, pause, resume download.
 class DownloadService {
-    // MARK: - Variables And Properties
-
     var activeDownloads: [URL: Download] = [:]
 
     /// SearchViewController creates downloadsSession
     var downloadsSession: URLSession!
 
-    // MARK: - Internal Methods
+    // MARK: - Methods
 
     func cancelDownload(_ track: Track) {
         guard

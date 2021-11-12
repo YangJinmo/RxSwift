@@ -8,8 +8,6 @@
 import UIKit
 
 final class AppCoordinator {
-    // MARK: - Constants
-
     private let window: UIWindow
 
     // MARK: - Initialization
@@ -18,7 +16,7 @@ final class AppCoordinator {
         self.window = window
     }
 
-    // MARK: - Internal Methods
+    // MARK: - Methods
 
     func start() {
         let viewController = AppContainer.instance.searchViewController

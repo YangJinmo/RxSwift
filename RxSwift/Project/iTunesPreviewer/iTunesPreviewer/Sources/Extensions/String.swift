@@ -8,8 +8,6 @@
 import Foundation
 
 extension String {
-    // MARK: - Variables
-
     var url: URL? {
         return URL(string: self)
     }

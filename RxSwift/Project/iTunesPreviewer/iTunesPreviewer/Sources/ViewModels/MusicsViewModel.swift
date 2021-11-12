@@ -9,16 +9,9 @@ import RxRelay
 import RxSwift
 
 final class MusicsViewModel: BaseViewModel {
-    // MARK: - Private Constants
-
     private let queryService: QueryServiceProtocol
-
-    // MARK: - Private Variables
-
     private var musics: PublishSubject<[Music]> = .init()
-
-    // MARK: - Variables And Properties
-
+    
     var musicsObservable: Observable<[Music]> {
         return musics.asObservable()
     }
@@ -29,7 +22,7 @@ final class MusicsViewModel: BaseViewModel {
         self.queryService = queryService
     }
 
-    // MARK: - Internal Methods
+    // MARK: - Methods
 
     func getSearchResults(searchTerm: String) {
         queryService.getSearchResults(searchTerm: searchTerm)

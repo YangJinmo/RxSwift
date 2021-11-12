@@ -1,5 +1,5 @@
 //
-//  BaseButton.swift
+//  BaseCollectionViewCell.swift
 //  iTunesPreviewer
 //
 //  Created by Jmy on 2021/04/28.
@@ -7,12 +7,17 @@
 
 import UIKit
 
-class BaseButton: UIButton {
+class BaseCollectionViewCell: UICollectionViewCell {
     // MARK: - Initialization
+
+    convenience init() {
+        self.init(frame: .zero)
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
+        backgroundColor = .systemBackground
         setupViews()
     }
 
@@ -20,7 +25,7 @@ class BaseButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Internal Methods
+    // MARK: - Methods
 
     func setupViews() {
     }

@@ -13,15 +13,10 @@ protocol QueryServiceProtocol {
 
 /// Runs query data task, and stores results in array of Musics
 class QueryService: QueryServiceProtocol {
-    // MARK: - Constants
-
     let defaultSession = URLSession(configuration: .default)
-
-    // MARK: - Variables And Properties
-
     var dataTask: URLSessionDataTask?
 
-    // MARK: - Internal Methods
+    // MARK: - Methods
 
     func getSearchResults(searchTerm: String) -> Observable<[Music]> {
         return Observable.create { observer -> Disposable in

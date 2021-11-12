@@ -8,7 +8,7 @@
 import UIKit
 
 final class MusicCell: BaseCollectionViewCell {
-    // MARK: - UI
+    // MARK: - Views
 
     private let albumImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
@@ -29,7 +29,7 @@ final class MusicCell: BaseCollectionViewCell {
         $0.backgroundColor = .secondarySystemBackground
     }
 
-    // MARK: - View Controller
+    // MARK: - View Life Cycle
 
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -41,23 +41,14 @@ final class MusicCell: BaseCollectionViewCell {
 
     override func setupViews() {
         super.setupViews()
-
-        configureSubviews()
-        configureConstraints()
-    }
-
-    // MARK: - Configuring
-
-    private func configureSubviews() {
+        
         contentView.addSubviews(
             albumImageView,
             titleLabel,
             artistLabel,
             dividerView
         )
-    }
-
-    private func configureConstraints() {
+        
         albumImageView.snp.makeConstraints {
             $0.top.left.bottom.equalToSuperview().inset(8)
             $0.width.height.equalTo(100)

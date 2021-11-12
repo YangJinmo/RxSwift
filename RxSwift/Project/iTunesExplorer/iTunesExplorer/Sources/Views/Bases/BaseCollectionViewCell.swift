@@ -8,13 +8,11 @@
 import UIKit
 
 class BaseCollectionViewCell: UICollectionViewCell {
-    // MARK: - Convenience Initialization
+    // MARK: - Initialization
 
     convenience init() {
         self.init(frame: .zero)
     }
-
-    // MARK: - Initialization
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,7 +25,7 @@ class BaseCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Internal Methods
+    // MARK: - Methods
 
     func setupViews() {
     }
