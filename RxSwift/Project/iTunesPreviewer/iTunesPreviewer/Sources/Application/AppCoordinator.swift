@@ -8,22 +8,21 @@
 import UIKit
 
 final class AppCoordinator {
-  
-  // MARK: - Constants
-  
-  private let window: UIWindow
-  
-  // MARK: - Initialization
-  
-  init(window: UIWindow) {
-    self.window = window
-  }
-  
-  // MARK: - Internal Methods
-  
-  func start() {
-    let viewController = AppContainer.instance.musicsViewController
-    window.rootViewController = viewController
-    window.makeKeyAndVisible()
-  }
+    // MARK: - Constants
+
+    private let window: UIWindow
+
+    // MARK: - Initialization
+
+    init(window: UIWindow) {
+        self.window = window
+    }
+
+    // MARK: - Internal Methods
+
+    func start() {
+        let viewController = AppContainer.instance.musicsViewController
+        window.rootViewController = viewController
+        window.makeKeyAndVisible()
+    }
 }

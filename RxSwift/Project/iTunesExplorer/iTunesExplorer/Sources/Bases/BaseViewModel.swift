@@ -8,14 +8,13 @@
 import RxSwift
 
 class BaseViewModel {
-  
-  // MARK: - Constants
-  
-  let disposeBag: DisposeBag = DisposeBag()
-  
-  // MARK: - Internal Methods
-  
-  func start() {
-    // no-op
-  }
+    // MARK: - Constants
+
+    let disposeBag: DisposeBag = DisposeBag()
+
+    // MARK: - Internal Methods
+
+    func start() {
+        // no-op
+    }
 }

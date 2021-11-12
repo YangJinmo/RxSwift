@@ -8,14 +8,13 @@
 import UIKit
 
 class MusicControlButton: BaseButton {
-  
-  // MARK: - Initialization
-  
-  override func setupViews() {
-    super.setupViews()
-    
-    tintColor = .label
-    setPreferredSymbolConfiguration(.init(scale: .large), forImageIn: .normal)
-    setPreferredSymbolConfiguration(.init(scale: .large), forImageIn: .selected)
-  }
+    // MARK: - Initialization
+
+    override func setupViews() {
+        super.setupViews()
+
+        tintColor = .label
+        setPreferredSymbolConfiguration(.init(scale: .large), forImageIn: .normal)
+        setPreferredSymbolConfiguration(.init(scale: .large), forImageIn: .selected)
+    }
 }

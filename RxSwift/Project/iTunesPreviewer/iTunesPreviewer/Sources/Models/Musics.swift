@@ -8,6 +8,6 @@
 import Foundation
 
 struct Musics: Decodable {
-  let resultCount: Int
-  let results: [Music]
+    let resultCount: Int
+    let results: [Music]
 }
