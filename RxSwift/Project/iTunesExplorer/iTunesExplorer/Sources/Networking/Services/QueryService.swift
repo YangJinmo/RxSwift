@@ -81,12 +81,10 @@ class QueryService: QueryServiceProtocol {
         term: String,
         completion: @escaping QueryResult
     ) {
-        guard let term: String = term.replacingOccurrences(of: " ", with: "+").encode else { return }
-
         let parameters = [
             "media": "music",
             "entity": "song",
-            "term": term,
+            "term": term.replacingOccurrences(of: " ", with: "+"),
         ]
 
         fetch(
@@ -103,7 +101,7 @@ class QueryService: QueryServiceProtocol {
     }
 
     func getSearchResults(searchTerm: String, completion: @escaping QueryResult) {
-        guard let term: String = searchTerm.replacingOccurrences(of: " ", with: "+").encode else { return }
+        let term: String = searchTerm.replacingOccurrences(of: " ", with: "+")
 
         dataTask?.cancel()
 

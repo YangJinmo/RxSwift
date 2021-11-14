@@ -29,7 +29,7 @@ class QueryService: QueryServiceProtocol {
             }
 
             let query: String = searchTerm.replacingOccurrences(of: " ", with: "+")
-            urlComponents.query = "media=music&entity=song&term=\(query)".encode
+            urlComponents.query = "media=music&entity=song&term=\(query)"
 
             guard let url: URL = urlComponents.url else {
                 observer.onError(NSError(domain: "error: \(urlComponents.string ?? "")", code: -1, userInfo: nil))
