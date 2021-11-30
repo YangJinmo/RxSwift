@@ -41,7 +41,6 @@ final class PlayerViewController: UIViewController {
 
     private let titleLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 24, weight: .bold)
-        $0.textColor = .label
     }
 
     private let artistLabel = UILabel().then {

@@ -23,7 +23,6 @@ final class TrackCell: BaseCollectionViewCell {
 
     private let titleLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 16, weight: .regular)
-        $0.textColor = .label
         $0.numberOfLines = 0
     }
 
